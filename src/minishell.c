@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/15 17:53:31 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:07:47 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ void	shell_loop(void)
 		else
 		{
 			commands = split_command(line);
-			// TODO: parser chaque commande et l'executer
+			status = 0;
 			if (commands != NULL)
+			{
+				status = launch(commands);
 				free_split(commands);
+			}
 			free(line);
 		}
 	}
