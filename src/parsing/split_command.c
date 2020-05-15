@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   split_command.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/15 17:53:00 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/15 15:37:54 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/15 17:53:58 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <minishell.h>
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft.h"
-# include "get_next_line.h"
+char	**split_command(char *line)
+{
+	char	**commands;
+	char	*tmp;
+	int		i;
 
-void	shell_loop(void);
-void	show_prompt(void);
-char	**split_command(char *line);
-void	free_split(char **str);
-#endif
+	i = 0;
+	commands = ft_split(line, ';');
+	while (commands[i] != NULL)
+	{
+		tmp = ft_strtrim(commands[i], " ");
+		free(commands[i]);
+		commands[i] = ft_strdup(tmp);
+		free(tmp);
+		i++;
+	}
+	return (commands);
+}

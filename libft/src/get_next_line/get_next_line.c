@@ -6,13 +6,13 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:50:34 by mrouabeh          #+#    #+#             */
-/*   Updated: 2019/11/12 20:27:48 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/15 17:54:26 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void ft_strjoin_free(char **str, char *buf)
+void	ft_strjoin_free(char **str, char *buf)
 {
 	char *tmp;
 

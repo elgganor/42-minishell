@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/15 17:53:00 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/15 17:17:49 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/15 17:53:40 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <minishell.h>
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft.h"
-# include "get_next_line.h"
+void	free_split(char **str)
+{
+	int	len;
 
-void	shell_loop(void);
-void	show_prompt(void);
-char	**split_command(char *line);
-void	free_split(char **str);
-#endif
+	len = 0;
+	while (str[len])
+		free(str[len++]);
+	free(str);
+}

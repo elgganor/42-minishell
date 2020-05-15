@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/05/14 15:53:57 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/05/15 17:16:57 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,18 +83,24 @@ INC=-I./inc
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME):
 	@echo "\033[0;34mBuilding Libft...\033[0m"
-	@ar rc $(NAME) $^
+	@make objets
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo "\033[1;34mLibft [OK]\n\033[0m"
+
+objets: $(OBJ)
 
 %.o: %.c
+	@echo "\033[0;32mCompilation of $< \033[0m"
 	@gcc $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
 	@rm -f $(OBJ)
 
 fclean: clean
+	@echo "\033[0;31mCleaning libft project... \033[0m"
 	@rm -f $(NAME)
 	
 re: 
