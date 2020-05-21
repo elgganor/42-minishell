@@ -4,10 +4,19 @@ INC=-I./inc -I./libft/inc
 FLAGS=-Wall -Wextra -Werror
 LIB=-L./libft -lft
 
+PARSING=parsing/list_commands.c \
+		parsing/split_command.c \
+		parsing/check_command_type.c
+
+EXECUTION=execution/execute_commands.c
+
+UTILS=utils/free_functions.c \
+		utils/show_prompt.c
+
 SRC=minishell.c \
-	split_command.c \
-	free_functions.c \
-	launch.c \
+	$(PARSING) \
+	$(EXECUTION) \
+	$(UTILS)
 
 SRCS=$(addprefix ./src/, $(SRC))
 OBJS=$(SRCS:.c=.o)

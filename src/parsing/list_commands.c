@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_command.c                                    :+:      :+:    :+:   */
+/*   list_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/15 15:37:54 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/15 17:53:58 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/21 16:19:29 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/21 16:19:30 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	**split_command(char *line)
+char	**list_commands(char *line)
 {
 	char	**commands;
 	char	*tmp;
