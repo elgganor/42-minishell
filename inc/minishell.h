@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/21 17:03:38 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/24 22:51:43 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "get_next_line.h"
+# include <limits.h>
 
 void	shell_loop(void);
 void	show_prompt(void);
@@ -32,4 +33,5 @@ void	free_split(char **str);
 int		execute_commands(char **commands);
 int		check_command_type(char *command);
 char	**split_command(char *command);
+int		builtin_pwd(void);
 #endif
