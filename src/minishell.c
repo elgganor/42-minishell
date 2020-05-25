@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/21 16:33:00 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/22 13:37:07 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	shell_loop(void)
 	while (status)
 	{
 		show_prompt();
-		if (get_next_line(1, &line) <= 0)
+		if (get_next_line(0, &line) <= 0)
 			status = 0;
 		else
 		{

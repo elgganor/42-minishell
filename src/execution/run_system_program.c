@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_prompt.c                                      :+:      :+:    :+:   */
+/*   run_system_program.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/21 16:21:29 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/25 15:10:51 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/25 22:09:01 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	show_prompt(void)
+int	run_system_program(char **command)
 {
-	char	directory[256];
+	pid_t	pid;
+	// int		status;
 
-	if (getcwd(directory, sizeof(directory)) == NULL)
-		ft_putstr("Error:\nImpossible to get current directory;\n");
+	printf("system program: %s\n", command[0]);
+	pid = fork();
+	if (pid == 0)
+	{
+		// execute
+	}
+	else if (pid < 0)
+	{
+		// error handling
+	}
 	else
-		ft_putstr(directory);
-	ft_putstr("> ");
+	{
+		// parent process
+	}
+	return (0);
 }

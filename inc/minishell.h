@@ -6,16 +6,15 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/21 17:03:38 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/25 22:06:23 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# define SYSPROG 0
 # define BUILTIN 1
-# define SYSPROG 2
-# define ERROR 3
 
 # include <stdio.h>
 # include <string.h>
@@ -32,4 +31,6 @@ void	free_split(char **str);
 int		execute_commands(char **commands);
 int		check_command_type(char *command);
 char	**split_command(char *command);
+int		run_builtin(char **command);
+int		run_system_program(char **command);
 #endif

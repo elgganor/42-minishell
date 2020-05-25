@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_prompt.c                                      :+:      :+:    :+:   */
+/*   run_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/21 16:21:29 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/25 15:10:51 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/25 22:07:57 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	show_prompt(void)
+int run_builtin(char **command)
 {
-	char	directory[256];
-
-	if (getcwd(directory, sizeof(directory)) == NULL)
-		ft_putstr("Error:\nImpossible to get current directory;\n");
-	else
-		ft_putstr(directory);
-	ft_putstr("> ");
+	printf("builtin: %s\n", command[0]);
+	return (0);
 }

@@ -8,7 +8,9 @@ PARSING=parsing/list_commands.c \
 		parsing/split_command.c \
 		parsing/check_command_type.c
 
-EXECUTION=execution/execute_commands.c
+EXECUTION=execution/execute_commands.c \
+		execution/run_builtin.c \
+		execution/run_system_program.c
 
 UTILS=utils/free_functions.c \
 		utils/show_prompt.c
