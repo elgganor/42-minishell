@@ -15,10 +15,14 @@ EXECUTION=execution/execute_commands.c \
 UTILS=utils/free_functions.c \
 		utils/show_prompt.c
 
+BUILTIN=builtin/pwd.c \
+		builtin/cd.c
+
 SRC=minishell.c \
 	$(PARSING) \
 	$(EXECUTION) \
-	$(UTILS)
+	$(UTILS) \
+	$(BUILTIN)
 
 SRCS=$(addprefix ./src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
