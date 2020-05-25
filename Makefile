@@ -15,8 +15,8 @@ EXECUTION=execution/execute_commands.c \
 UTILS=utils/free_functions.c \
 		utils/show_prompt.c
 
-BUILTIN=builtin/pwd.c \
-		builtin/cd.c
+BUILTIN=builtin/pwd.c
+		# builtin/cd.c
 
 SRC=minishell.c \
 	$(PARSING) \
