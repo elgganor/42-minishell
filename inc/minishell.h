@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 15:12:19 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 19:23:18 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include <limits.h>
+# include <signal.h>
 
 /*
 ** MINISHELL PROTOTYPES
@@ -45,6 +46,7 @@ void	ft_printerror(char *err);
 char	*get_env_var(char *var);
 void	init_env(char **env);
 int		env_len(char **env);
+void	get_absolute_path(char **command);
 
 /*
 ** BUILT-INS PROTOTYPES

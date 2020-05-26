@@ -6,28 +6,72 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 15:12:51 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 19:38:45 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	run_system_program(char **command)
+char	*join_path(char *path, char *command)
+{
+	char	*bin;
+	char	*tmp;
+
+	bin = (char *)ft_calloc(sizeof(char),
+					ft_strlen(command) + ft_strlen(path) + 2);
+	if (bin == NULL)
+		return (NULL);
+	tmp = ft_strjoin(path, "/");
+	bin = ft_strjoin(tmp, command);
+	free(tmp);
+	return (bin);
+}
+
+void	get_absolute_path(char **command)
+{
+	char	*path;
+	char	*bin;
+	char	**path_split;
+	int		i;
+
+	if ((path = get_env_var("PATH")) == NULL)
+		path = ft_strdup("/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
+	if (command[0][0] != '/' && ft_strncmp(command[0], "./", 2) != 0)
+	{
+		path_split = split(path, ":");
+		i = -1;
+		while (path_split[++i] != NULL)
+		{
+			bin = join_path(path_split[i], command[0]);
+			if (bin == NULL)
+				break ;
+			// check l'existence du binaire et on quitte la boucle si existe
+		}
+		free_split(path_split);
+		free(command[0]);
+		command[0] = bin;
+	}
+	free(path);
+}
+
+int		run_system_program(char **command)
 {
 	pid_t	pid;
-	pid_t	wpid;
 	int		status;
 
-	printf("system program: %s\n", command[0]);
 	pid = fork();
 	if (pid == 0)
 	{
-		// execute
+		if (execve(command[0], command, NULL) == -1)
+			ft_printerror("Shell: No such file or directory");
+		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 		ft_printerror("Error with forking");
 	else
-		while (!WIFEXITED(status) || !WIFSIGNALED(status))
-			wpid = waitpid(pid, &status, WUNTRACED);
+	{
+		waitpid(pid, &status, WUNTRACED);
+		kill(pid, SIGTERM);
+	}
 	return (1);
 }
