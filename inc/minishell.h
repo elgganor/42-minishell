@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 12:00:13 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 15:12:19 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,22 @@
 ** MINISHELL PROTOTYPES
 */
 
-void	shell_loop(char **env);
+char	**g_env;
+
+void	shell_loop();
 void	show_prompt(void);
 char	**list_commands(char *line);
 void	free_split(char **str);
-int		execute_commands(char **commands, char **env);
+int		execute_commands(char **commands);
 int		is_builtin(char *command);
 char	**split_command(char *command);
-int		run_builtin(char **command, char **env);
-int		run_system_program(char **command, char **env);
+int		run_builtin(char **command);
+int		run_system_program(char **command);
 char	*take_input(void);
 void	ft_printerror(char *err);
+char	*get_env_var(char *var);
+void	init_env(char **env);
+int		env_len(char **env);
 
 /*
 ** BUILT-INS PROTOTYPES

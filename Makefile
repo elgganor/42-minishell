@@ -13,8 +13,10 @@ EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
 		execution/run_system_program.c
 
+INITIALISATION=initialisation/show_prompt.c \
+		initialisation/env.c
+
 UTILS=utils/free_functions.c \
-		utils/show_prompt.c \
 		utils/error_handler.c
 
 BUILTIN=builtin/pwd.c
@@ -24,7 +26,8 @@ SRC=minishell.c \
 	$(PARSING) \
 	$(EXECUTION) \
 	$(UTILS) \
-	$(BUILTIN)
+	$(BUILTIN) \
+	$(INITIALISATION)
 
 SRCS=$(addprefix ./src/, $(SRC))
 OBJS=$(SRCS:.c=.o)

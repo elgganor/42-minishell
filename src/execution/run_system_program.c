@@ -6,13 +6,13 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 12:28:22 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 15:12:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	run_system_program(char **command, char **env)
+int	run_system_program(char **command)
 {
 	pid_t	pid;
 	pid_t	wpid;
@@ -23,7 +23,6 @@ int	run_system_program(char **command, char **env)
 	if (pid == 0)
 	{
 		// execute
-		(void)env;
 	}
 	else if (pid < 0)
 		ft_printerror("Error with forking");

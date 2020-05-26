@@ -6,13 +6,13 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 11:50:34 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 11:53:33 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 15:08:41 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char *g_builtins[] = {
+char	*g_builtins[] = {
 	"echo",
 	"cd",
 	"pwd",

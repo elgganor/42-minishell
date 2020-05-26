@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 12:27:48 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 15:11:25 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 
 // TODO: Chercher et lancer le bon executable en fonction de la variable PATh
-int	execute_commands(char **commands, char **env)
+int	execute_commands(char **commands)
 {
 	int		len;
 	char	**command;
@@ -30,9 +30,9 @@ int	execute_commands(char **commands, char **env)
 		if ((command = split_command(commands[len])) != NULL)
 		{
 			if (is_builtin(command[0]))
-				status = run_builtin(command, env);
+				status = run_builtin(command);
 			else
-				status = run_system_program(command, env);
+				status = run_system_program(command);
 			free_split(command);
 		}
 		len++;
