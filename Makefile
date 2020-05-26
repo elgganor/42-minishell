@@ -6,14 +6,16 @@ LIB=-L./libft -lft
 
 PARSING=parsing/list_commands.c \
 		parsing/split_command.c \
-		parsing/check_command_type.c
+		parsing/is_builtin.c \
+		parsing/take_input.c
 
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
 		execution/run_system_program.c
 
 UTILS=utils/free_functions.c \
-		utils/show_prompt.c
+		utils/show_prompt.c \
+		utils/error_handler.c
 
 BUILTIN=builtin/pwd.c
 		# builtin/cd.c

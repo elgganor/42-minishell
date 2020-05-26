@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_system_program.c                               :+:      :+:    :+:   */
+/*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 12:28:22 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/26 11:50:34 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/26 11:53:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	run_system_program(char **command, char **env)
-{
-	pid_t	pid;
-	pid_t	wpid;
-	int		status;
+char *g_builtins[] = {
+	"echo",
+	"cd",
+	"pwd",
+	"export",
+	"unset",
+	"env",
+	"exit"
+};
 
-	printf("system program: %s\n", command[0]);
-	pid = fork();
-	if (pid == 0)
+/*
+** Check if the command is a builtin or a system program
+*/
+
+int	is_builtin(char *command)
+{
+	int	i;
+
+	i = 0;
+	while (i < 7)
 	{
-		// execute
-		(void)env;
+		if (ft_strcmp(command, g_builtins[i]) == 0)
+			return (1);
+		i++;
 	}
-	else if (pid < 0)
-		ft_printerror("Error with forking");
-	else
-		while (!WIFEXITED(status) || !WIFSIGNALED(status))
-			wpid = waitpid(pid, &status, WUNTRACED);
-	return (1);
+	return (0);
 }

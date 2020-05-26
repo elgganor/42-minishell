@@ -6,13 +6,19 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/25 22:13:56 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 12:01:32 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	shell_loop(void)
+/*
+** Main loop for the shell
+**
+** Show the prompt, take the user input, parse the input and execute commands
+*/
+
+void	shell_loop(char **env)
 {
 	char	*line;
 	char	**commands;
@@ -21,25 +27,25 @@ void	shell_loop(void)
 	status = 1;
 	while (status)
 	{
+		status = 0;
 		show_prompt();
-		if (get_next_line(0, &line) <= 0)
-			status = 0;
-		else
+		line = take_input();
+		commands = list_commands(line);
+		if (commands != NULL)
 		{
-			status = 0;
-			commands = list_commands(line);
-			if (commands != NULL)
-			{
-				status = execute_commands(commands);
-				free_split(commands);
-			}
-			free(line);
+			status = execute_commands(commands, env);
+			free_split(commands);
 		}
+		else
+			ft_printerror("Impossible to treat commands");
+		free(line);
 	}
 }
 
-int		main(void)
+int		main(int ac, char **av, char **envp)
 {
-	shell_loop();
+	(void)ac;
+	(void)av;
+	shell_loop(envp);
 	return (EXIT_SUCCESS);
 }

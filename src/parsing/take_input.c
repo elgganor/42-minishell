@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_command_type.c                               :+:      :+:    :+:   */
+/*   take_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/21 16:54:40 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/25 22:08:45 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/05/26 10:41:09 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/05/26 10:47:12 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char *g_builtins[] = {
-	"echo",
-	"cd",
-	"pwd",
-	"export",
-	"unset",
-	"env",
-	"exit"
-};
-
-/*
-** Check si il s'agit d'une commande valide et si il s'agit d'un builtin
-** ou bien d'un system program
-** return: 0 error, 1 sysprog, 2 builtin
-*/
-int	check_command_type(char *command)
+char	*take_input(void)
 {
-	int	i;
+	char	*input;
 
-	i = 0;
-	while (i < 7)
+	if (get_next_line(0, &input) <= 0)
 	{
-		if (ft_strcmp(command, g_builtins[i]) == 0)
-			return (BUILTIN);
-		i++;
+		ft_printerror("Impossible to take input");
+		exit(EXIT_FAILURE);
 	}
-	return (SYSPROG);
+	return (input);
 }

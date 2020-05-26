@@ -6,30 +6,36 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/25 22:13:35 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/26 12:27:48 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	execute_commands(char **commands)
+/*
+** Check if the command is a builtin or a system program and execute it
+*/
+
+// TODO: Chercher et lancer le bon executable en fonction de la variable PATh
+int	execute_commands(char **commands, char **env)
 {
 	int		len;
 	char	**command;
+	int		status;
 
 	len = 0;
+	status = 1;
 	while (commands[len] != NULL)
 	{
 		if ((command = split_command(commands[len])) != NULL)
 		{
-			if (check_command_type(command[0]) == BUILTIN)
-				run_builtin(command);
+			if (is_builtin(command[0]))
+				status = run_builtin(command, env);
 			else
-				run_system_program(command);
+				status = run_system_program(command, env);
 			free_split(command);
-			command = NULL;
 		}
 		len++;
 	}
-	return (1);
+	return (status);
 }
