@@ -1,7 +1,7 @@
 NAME=minishell
 
 INC=-I./inc -I./libft/inc
-FLAGS=-Wall -Wextra -Werror
+FLAGS=-Wall -Wextra -Werror -fsanitize=address
 LIB=-L./libft -lft
 
 PARSING=parsing/list_commands.c \

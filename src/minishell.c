@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 15:19:58 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/27 12:07:24 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	shell_loop(void)
 			ft_printerror("Impossible to treat commands");
 		free(line);
 	}
+	free_split(g_env);
 }
 
 int		main(int ac, char **av, char **envp)

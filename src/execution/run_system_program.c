@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 19:38:45 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/27 12:50:28 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ char	*join_path(char *path, char *command)
 	return (bin);
 }
 
+int		is_executable(char *bin)
+{
+	struct stat f;
+
+	if (lstat(bin, &f) == -1)
+		return (0);
+	if (f.st_mode & S_IFREG)
+	{
+		if (f.st_mode & S_IXUSR)
+			return (1);
+		else
+			ft_printerror("Permission denied;");
+	}
+	return (0);
+}
+
 void	get_absolute_path(char **command)
 {
 	char	*path;
@@ -34,22 +50,23 @@ void	get_absolute_path(char **command)
 	char	**path_split;
 	int		i;
 
-	if ((path = get_env_var("PATH")) == NULL)
+	if ((path = ft_strdup(get_env_var("PATH"))) == NULL)
 		path = ft_strdup("/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
-	if (command[0][0] != '/' && ft_strncmp(command[0], "./", 2) != 0)
+	if (*command[0] != '/' && ft_strncmp(*command, "./", 2) != 0)
 	{
-		path_split = split(path, ":");
+		path_split = ft_split(path, ':');
 		i = -1;
 		while (path_split[++i] != NULL)
 		{
-			bin = join_path(path_split[i], command[0]);
+			bin = join_path(path_split[i], *command);
 			if (bin == NULL)
 				break ;
-			// check l'existence du binaire et on quitte la boucle si existe
+			if (is_executable(bin))
+				break ;
 		}
 		free_split(path_split);
-		free(command[0]);
-		command[0] = bin;
+		free(*command);
+		*command = bin;
 	}
 	free(path);
 }
@@ -63,7 +80,7 @@ int		run_system_program(char **command)
 	if (pid == 0)
 	{
 		if (execve(command[0], command, NULL) == -1)
-			ft_printerror("Shell: No such file or directory");
+			ft_putstr("Shell: No such file or directory\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
