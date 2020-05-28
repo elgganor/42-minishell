@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/02 20:18:22 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/02 20:19:08 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
-
-int	builtin_env()
+int	ft_isascii(int c)
 {
-	t_env	*env;
-
-	env = g_env;
-	while (env != NULL)
-	{
-		ft_putstr(env->variable);
-		env = env->next;
-	}
+	return (0 <= c && c <= 127);
 }

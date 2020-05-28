@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/11 18:52:11 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/11 18:53:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+void	ft_putnbr(int n)
 {
-	t_env	*env;
+	long	nb;
 
-	env = g_env;
-	while (env != NULL)
+	nb = n;
+	if (n < 0)
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		ft_putchar('-');
+		nb *= -1;
 	}
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + '0');
 }

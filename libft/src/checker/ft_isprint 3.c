@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/03 09:34:00 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/03 09:35:53 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
-
-int	builtin_env()
+int	ft_isprint(int c)
 {
-	t_env	*env;
-
-	env = g_env;
-	while (env != NULL)
-	{
-		ft_putstr(env->variable);
-		env = env->next;
-	}
+	return (32 <= c && c < 127);
 }

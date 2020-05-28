@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/07 15:57:00 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/17 12:36:26 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+void	ft_bzero(void *s, size_t n)
 {
-	t_env	*env;
+	char	*str;
+	size_t	i;
 
-	env = g_env;
-	while (env != NULL)
+	if (n != 0)
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		i = 0;
+		str = (char *)s;
+		while (i < n)
+		{
+			str[i] = '\0';
+			i++;
+		}
 	}
 }

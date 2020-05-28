@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/08 09:54:36 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/23 11:40:22 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_env	*env;
+	void	*dest;
 
-	env = g_env;
-	while (env != NULL)
+	if (count * size == 0)
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		count = 1;
+		size = 1;
 	}
+	if (!(dest = (void *)malloc(size * count)))
+		return (0);
+	ft_memset(dest, '\0', size * count);
+	return (dest);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/03 09:39:03 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/03 09:43:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+size_t	ft_strlen(const char *str)
 {
-	t_env	*env;
+	size_t	len;
 
-	env = g_env;
-	while (env != NULL)
-	{
-		ft_putstr(env->variable);
-		env = env->next;
-	}
+	len = 0;
+	if (!str)
+		return (0);
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }

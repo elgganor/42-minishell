@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_itou.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/11/27 22:50:44 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/12/02 14:03:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+unsigned int	ft_itou(int n)
 {
-	t_env	*env;
+	long	max;
 
-	env = g_env;
-	while (env != NULL)
+	max = 4294967296;
+	if (n < 0)
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		return (max + n);
 	}
+	return (n);
 }

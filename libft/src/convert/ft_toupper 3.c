@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/03 09:49:59 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/12/02 14:04:03 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
-
-int	builtin_env()
+int	ft_toupper(int c)
 {
-	t_env	*env;
-
-	env = g_env;
-	while (env != NULL)
-	{
-		ft_putstr(env->variable);
-		env = env->next;
-	}
+	if ('a' <= c && c <= 'z')
+		c -= 32;
+	return (c);
 }

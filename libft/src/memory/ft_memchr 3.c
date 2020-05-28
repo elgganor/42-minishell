@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 14:32:32 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:36:38 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/08 09:26:30 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/17 12:42:59 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	builtin_exit(void)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	free_env();
+	size_t			i;
+	unsigned char	*src;
+
+	if (n == 0)
+		return (0);
+	src = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (src[i] == (unsigned char)c)
+			return ((void *)(src + i));
+		i++;
+	}
 	return (0);
 }

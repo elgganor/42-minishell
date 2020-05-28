@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/12/02 14:03:45 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/12/02 14:03:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+char	*ft_strtoupper(char *s)
 {
-	t_env	*env;
+	int	i;
 
-	env = g_env;
-	while (env != NULL)
+	i = 0;
+	while (s[i])
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		if (ft_islower(s[i]))
+			s[i] = ft_toupper(s[i]);
+		i++;
 	}
+	return (s);
 }

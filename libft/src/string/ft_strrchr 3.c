@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Created: 2019/10/04 09:57:04 by mrouabeh          #+#    #+#             */
+/*   Updated: 2019/10/17 14:25:26 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int	builtin_env()
+char	*ft_strrchr(const char *s, int c)
 {
-	t_env	*env;
+	int	len;
 
-	env = g_env;
-	while (env != NULL)
+	len = ft_strlen(s);
+	if (s[len] == c)
+		return ((char *)(s + len));
+	while (len > 0)
 	{
-		ft_putstr(env->variable);
-		env = env->next;
+		if (s[len - 1] == c)
+			return ((char *)(s + len - 1));
+		len--;
 	}
+	return (0);
 }
