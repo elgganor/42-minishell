@@ -3,29 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:20:38 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:52:42 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/05/28 15:32:19 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	builtin_pwd(char *command)
+int	builtin_pwd(void)
 {
 	char	*path;
-	char	buf[PATH_MAX + 1];
-	(void)command;
-	int	i;
+	char	buf[PATH_MAX];
 
-	i = 0;
-	if (command[i] > 0)
-	{
-		ft_putstr("Wrong number of arguments");
-		return (0);
-	}
-	path = getcwd(buf, PATH_MAX);
-	ft_putstr(path);
-	return (0);
+	if ((path = getcwd(buf, PATH_MAX)) == NULL)
+		ft_putendl_fd("Impossible to get current path;", 2);
+	else
+		ft_putendl_fd(path, 1);
+	return (1);
 }

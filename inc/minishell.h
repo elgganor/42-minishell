@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/28 14:53:24 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/05/28 15:32:37 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	free_split(char **str);
 ** BUILT-INS PROTOTYPES
 */
 
-int		builtin_pwd(char *command);
+int		builtin_pwd(void);
 int		builtin_cd(void);
 int		builtin_env(void);
 int		builtin_exit(void);
