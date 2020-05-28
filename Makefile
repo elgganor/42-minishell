@@ -21,6 +21,8 @@ UTILS=utils/free_functions.c \
 
 BUILTIN=builtin/pwd.c
 		# builtin/cd.c
+		# builtin/env.c
+		# builtin/exit.c
 
 SRC=minishell.c \
 	$(PARSING) \
