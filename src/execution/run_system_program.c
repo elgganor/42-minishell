@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/27 12:50:28 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/29 11:24:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		is_executable(char *bin)
 		if (f.st_mode & S_IXUSR)
 			return (1);
 		else
-			ft_printerror("Permission denied;");
+			ft_puterr("Permission denied");
 	}
 	return (0);
 }
@@ -80,11 +80,11 @@ int		run_system_program(char **command)
 	if (pid == 0)
 	{
 		if (execve(command[0], command, NULL) == -1)
-			ft_putstr("Shell: No such file or directory\n");
+			ft_puterr("No such file or directory");
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
-		ft_printerror("Error with forking");
+		ft_puterr("Error with forking");
 	else
 	{
 		waitpid(pid, &status, WUNTRACED);

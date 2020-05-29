@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/27 17:40:50 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/29 11:24:35 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	shell_loop(void)
 			free_split(commands);
 		}
 		else
-			ft_printerror("Impossible to treat commands");
+			ft_puterr("Impossible to treat commands");
 		free(line);
 	}
 	free_env();

@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/29 10:48:41 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/05/29 11:24:16 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_env(char **env);
 char	*get_env_var(char *var);
 void	append_env(char *var);
 
-void	ft_printerror(char *err);
+void	ft_puterr(char *err);
 
 void	free_env(void);
 void	free_split(char **str);
