@@ -41,7 +41,6 @@ typedef struct	s_env
 ** MINISHELL PROTOTYPES
 */
 
-// char	**g_env;
 t_env	*g_env;
 
 void	shell_loop();
