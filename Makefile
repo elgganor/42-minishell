@@ -19,8 +19,8 @@ INITIALISATION=initialisation/show_prompt.c \
 UTILS=utils/free_functions.c \
 		utils/error_handler.c
 
-BUILTIN=builtin/pwd.c
-		# builtin/cd.c
+BUILTIN=builtin/pwd.c \
+		builtin/cd.c
 		# builtin/env.c
 		# builtin/exit.c
 
