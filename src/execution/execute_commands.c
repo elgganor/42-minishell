@@ -14,6 +14,9 @@
 
 /*
 ** Check if the command is a builtin or a system program and execute it
+**
+** @param    char**: the command to execute
+** @return   int: status of the execution
 */
 
 int	execute_commands(char **commands)

@@ -14,8 +14,6 @@
 
 /*
 ** Main loop for the shell
-**
-** Show the prompt, take the user input, parse the input and execute commands
 */
 
 void	shell_loop(void)
