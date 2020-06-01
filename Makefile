@@ -49,6 +49,11 @@ $(NAME):
 
 objets: $(OBJS)
 
+norme:
+	norminette inc
+	norminette libft
+	norminette src
+
 %.o: %.c
 	@echo "\033[0;32mCompilation of $< \033[0m"
 	@gcc $(FLAGS) $(INC) -o $@ -c $<
