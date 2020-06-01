@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 17:17:49 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/27 17:46:19 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/01 16:26:02 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,4 @@ void	free_env(void)
 		free(current);
 		current = NULL;
 	}
-	free(g_env);
-	g_env = NULL;
 }
