@@ -6,11 +6,18 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 13:52:05 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/27 17:37:30 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:01:31 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 char	*get_env_var(char *var)
 {
@@ -32,6 +39,13 @@ char	*get_env_var(char *var)
 	return (NULL);
 }
 
+/*
+** @description
+**
+** @param
+** @return
+*/
+
 void	append_env(char *var)
 {
 	t_env	*new;
@@ -51,6 +65,13 @@ void	append_env(char *var)
 		last->next = new;
 	}
 }
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 void	init_env(char **env)
 {

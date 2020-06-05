@@ -6,11 +6,18 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 17:17:49 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/01 16:26:02 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:02:23 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 void	free_split(char **str)
 {
@@ -21,6 +28,13 @@ void	free_split(char **str)
 		free(str[len++]);
 	free(str);
 }
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 void	free_env(void)
 {

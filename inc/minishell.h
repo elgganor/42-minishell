@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/29 10:48:41 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 15:02:29 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,15 @@ typedef struct	s_env
 }				t_env;
 
 /*
-** MINISHELL PROTOTYPES
+** ===== MINISHELL PROTOTYPES =====
 */
 
 t_env	*g_env;
-
 void	shell_loop();
 
-void	show_prompt(void);
-
-char	*take_input(void);
-char	**list_commands(char *line);
-char	**split_command(char *command);
-int		is_builtin(char *command);
+/*
+** EXECUTION PROTOTYPES
+*/
 
 int		execute_commands(char **commands);
 int		run_builtin(char **command);
@@ -59,14 +55,36 @@ int		is_executable(char *bin);
 void	get_absolute_path(char **command);
 char	*join_path(char *path, char *command);
 
+/*
+** INITIALISATION PROTOTYPES
+*/
+
+void	show_prompt(void);
 void	init_env(char **env);
 char	*get_env_var(char *var);
 void	append_env(char *var);
 
-void	ft_puterr(char *err);
+/*
+** PARSING PROTOTYPES
+*/
 
+char	*take_input(void);
+char	**list_commands(char *line);
+char	**split_command(char *command);
+int		is_builtin(char *command);
+int		redirection(char **command);
+int		redirect_output(char **command, int pos, int type);
+int		redirect_input(char **command, int pos);
+void	clear_redirection(void);
+
+/*
+** UTILS PROTOTYPES
+*/
+
+void	ft_puterr(char *err);
 void	free_env(void);
 void	free_split(char **str);
+char	**clear_command_of_redirection(char **command);
 
 /*
 ** BUILT-INS PROTOTYPES
@@ -76,4 +94,5 @@ int		builtin_pwd(void);
 int		builtin_cd(char **command);
 int		builtin_env(void);
 int		builtin_exit(void);
+
 #endif

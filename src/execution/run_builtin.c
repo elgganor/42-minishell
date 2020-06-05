@@ -6,11 +6,18 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/29 10:53:14 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:01:58 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 int	run_builtin(char **command)
 {

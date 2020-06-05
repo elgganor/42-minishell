@@ -7,7 +7,8 @@ LIB=-L./libft -lft
 PARSING=parsing/list_commands.c \
 		parsing/split_command.c \
 		parsing/is_builtin.c \
-		parsing/take_input.c
+		parsing/take_input.c \
+		parsing/redirection.c
 
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
@@ -17,7 +18,8 @@ INITIALISATION=initialisation/show_prompt.c \
 		initialisation/env.c
 
 UTILS=utils/free_functions.c \
-		utils/error_handler.c
+		utils/error_handler.c \
+		utils/clear_redirection.c
 
 BUILTIN=builtin/pwd.c
 		# builtin/cd.c
@@ -48,11 +50,6 @@ $(NAME):
 	@echo "\033[1;34mminishell [OK]\n \033[0m"
 
 objets: $(OBJS)
-
-norme:
-	norminette inc
-	norminette libft
-	norminette src
 
 %.o: %.c
 	@echo "\033[0;32mCompilation of $< \033[0m"

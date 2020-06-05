@@ -6,11 +6,18 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/29 11:24:51 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:01:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 char	*join_path(char *path, char *command)
 {
@@ -27,6 +34,13 @@ char	*join_path(char *path, char *command)
 	return (bin);
 }
 
+/*
+** @description
+**
+** @param
+** @return
+*/
+
 int		is_executable(char *bin)
 {
 	struct stat f;
@@ -42,6 +56,13 @@ int		is_executable(char *bin)
 	}
 	return (0);
 }
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 void	get_absolute_path(char **command)
 {
@@ -70,6 +91,13 @@ void	get_absolute_path(char **command)
 	}
 	free(path);
 }
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 int		run_system_program(char **command)
 {

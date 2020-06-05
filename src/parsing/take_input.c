@@ -6,11 +6,18 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 10:41:09 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/29 11:25:25 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:00:48 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+/*
+** @description
+**
+** @param
+** @return
+*/
 
 char	*take_input(void)
 {

@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 11:50:34 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/05/26 15:08:41 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/03 10:01:05 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	*g_builtins[] = {
 };
 
 /*
-** Check if the command is a builtin or a system program
+** @description
+**
+** @param
+** @return
 */
 
 int	is_builtin(char *command)
