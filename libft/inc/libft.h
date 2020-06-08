@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 19:08:02 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 14:25:42 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 10:21:20 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char			**ft_split(char const *s, char c);
 int				ft_arrlen(char **arr);
+void			ft_substitute(char **old, char *new);
 
 #endif

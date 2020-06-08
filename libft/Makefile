@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/06/03 14:25:56 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/06/08 10:21:05 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ STRING=string/ft_split.c \
 	string/ft_strtrim.c \
 	string/ft_substr.c \
 	string/ft_strcmp.c \
-	string/ft_arrlen.c
+	string/ft_arrlen.c \
+	string/ft_substitute.c
 LINKED_LIST=linked_list/ft_lstadd_front_bonus.c \
 	linked_list/ft_lstadd_back_bonus.c \
 	linked_list/ft_lstdelone_bonus.c \

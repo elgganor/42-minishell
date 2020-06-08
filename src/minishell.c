@@ -6,17 +6,15 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 10:00:39 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 10:15:59 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
 /*
-** @description
-**
-** @param
-** @return
+** Main loop for the shell
+** Read, parse and execute commands
 */
 
 void	shell_loop(void)

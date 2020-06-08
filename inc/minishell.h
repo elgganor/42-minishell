@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 15:02:29 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 11:04:21 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		redirection(char **command);
 int		redirect_output(char **command, int pos, int type);
 int		redirect_input(char **command, int pos);
 void	clear_redirection(void);
+void	parse_env_var(char **command);
 
 /*
 ** UTILS PROTOTYPES

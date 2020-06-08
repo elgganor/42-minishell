@@ -8,7 +8,8 @@ PARSING=parsing/list_commands.c \
 		parsing/split_command.c \
 		parsing/is_builtin.c \
 		parsing/take_input.c \
-		parsing/redirection.c
+		parsing/redirection.c \
+		parsing/env_var.c
 
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
