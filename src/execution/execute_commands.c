@@ -6,17 +6,17 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 12:06:39 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 13:30:57 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
 /*
-** @description
+** call the right function to execute the command
 **
-** @param
-** @return
+** @param char**: command to execute
+** @return int: status of execution
 */
 
 int	execute_command(char **command)
@@ -59,8 +59,6 @@ int	execute_commands(char **commands)
 			parse_env_var(command);
 			if (redirection(&command))
 				status = execute_command(command);
-			// if ((command = clear_command_of_redirection(command)) == NULL)
-			// 	continue ;
 			free_split(command);
 			clear_redirection();
 		}
