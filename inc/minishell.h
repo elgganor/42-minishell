@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 11:04:21 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 12:10:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*take_input(void);
 char	**list_commands(char *line);
 char	**split_command(char *command);
 int		is_builtin(char *command);
-int		redirection(char **command);
+int		redirection(char ***command);
 int		redirect_output(char **command, int pos, int type);
 int		redirect_input(char **command, int pos);
 void	clear_redirection(void);
@@ -85,7 +85,7 @@ void	parse_env_var(char **command);
 void	ft_puterr(char *err);
 void	free_env(void);
 void	free_split(char **str);
-char	**clear_command_of_redirection(char **command);
+int		clear_command_of_redirection(char ***command);
 
 /*
 ** BUILT-INS PROTOTYPES
