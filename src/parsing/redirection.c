@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/04 09:25:01 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 13:26:35 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,28 @@ int	redirect_output(char **command, int pos, int type)
 ** @return
 */
 
-int	redirection(char **command)
+int	redirection(char ***command)
 {
 	int	i;
 
-	i = 0;
-	while (command[i] != NULL)
+	i = -1;
+	while ((*command)[++i] != NULL)
 	{
-		if (!ft_strcmp(command[i], ">"))
+		if (!ft_strcmp((*command)[i], ">"))
 		{
-			if (!redirect_output(command, i, 0))
+			if (!redirect_output((*command), i, 0))
 				return (0);
 		}
-		else if (!ft_strcmp(command[i], "<"))
+		else if (!ft_strcmp((*command)[i], ">>"))
 		{
-			if (!redirect_input(command, i))
+			if (!redirect_output((*command), i, 1))
 				return (0);
 		}
-		else if (!ft_strcmp(command[i], ">>"))
+		else if (!ft_strcmp((*command)[i], "<"))
 		{
-			if (!redirect_output(command, i, 1))
+			if (!redirect_input((*command), i))
 				return (0);
 		}
-		i++;
 	}
-	return (1);
+	return (clear_command_of_redirection(command));
 }

@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 11:06:41 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/08 12:06:39 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,10 @@ int	execute_commands(char **commands)
 		if ((command = split_command(commands[len])) != NULL)
 		{
 			parse_env_var(command);
-			if (!redirection(command))
-				continue ;
-			if ((command = clear_command_of_redirection(command)) == NULL)
-				continue ;
-			status = execute_command(command);
+			if (redirection(&command))
+				status = execute_command(command);
+			// if ((command = clear_command_of_redirection(command)) == NULL)
+			// 	continue ;
 			free_split(command);
 			clear_redirection();
 		}
