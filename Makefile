@@ -22,10 +22,10 @@ UTILS=utils/free_functions.c \
 		utils/error_handler.c \
 		utils/clear_redirection.c
 
-BUILTIN=builtin/pwd.c
-		# builtin/cd.c
-		# builtin/env.c
-		# builtin/exit.c
+BUILTIN=builtin/pwd.c \
+        builtin/cd.c \
+        builtin/exit.c \
+      # builtin/env.c
 
 SRC=minishell.c \
 	$(PARSING) \

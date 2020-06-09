@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/09 10:20:15 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/09 18:19:56 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <limits.h>
 # include <signal.h>
 # include <sys/stat.h>
+# include <errno.h> 
 
 /*
 ** STRUCTURES
