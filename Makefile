@@ -25,6 +25,7 @@ UTILS=utils/free_functions.c \
 BUILTIN=builtin/pwd.c \
         builtin/cd.c \
         builtin/exit.c \
+        builtin/echo.c \
       # builtin/env.c
 
 SRC=minishell.c \
