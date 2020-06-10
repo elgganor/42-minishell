@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 12:10:33 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/10 10:57:22 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	shell_loop();
 ** EXECUTION PROTOTYPES
 */
 
-int		execute_commands(char **commands);
+int		execute_commands(char *commands);
+int		process_commands(char **commands);
+int		execute_piped_commands(char **piped_commands);
 int		run_builtin(char **command);
 int		run_system_program(char **command);
 int		is_executable(char *bin);
@@ -77,6 +79,7 @@ int		redirect_output(char **command, int pos, int type);
 int		redirect_input(char **command, int pos);
 void	clear_redirection(void);
 void	parse_env_var(char **command);
+char	**parse_pipe(char *command);
 
 /*
 ** UTILS PROTOTYPES

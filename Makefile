@@ -9,11 +9,13 @@ PARSING=parsing/list_commands.c \
 		parsing/is_builtin.c \
 		parsing/take_input.c \
 		parsing/redirection.c \
-		parsing/env_var.c
+		parsing/env_var.c \
+		parsing/pipe.c
 
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
-		execution/run_system_program.c
+		execution/run_system_program.c \
+		execution/process_command.c
 
 INITIALISATION=initialisation/show_prompt.c \
 		initialisation/env.c
