@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 13:30:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/10 11:04:14 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,43 @@ int	execute_command(char **command)
 ** @return   int: status of the execution
 */
 
-int	execute_commands(char **commands)
+int	execute_commands(char *command)
 {
-	int		len;
-	char	**command;
-	int		status;
+	char		**commandArgs;
+	int			status;
 
-	len = 0;
 	status = 1;
-	while (commands[len] != NULL)
+	if ((commandArgs = split_command(command)) != NULL)
 	{
-		if ((command = split_command(commands[len])) != NULL)
-		{
-			parse_env_var(command);
-			if (redirection(&command))
-				status = execute_command(command);
-			free_split(command);
-			clear_redirection();
-		}
-		len++;
+		parse_env_var(commandArgs);
+		if (redirection(&commandArgs))
+			status = execute_command(commandArgs);
+		free_split(commandArgs);
+		clear_redirection();
 	}
 	return (status);
+}
+
+/*
+** Execute commands with pipe
+**
+** @param char**: list of piped commands
+** @return int: status of the execution
+*/
+
+int	execute_piped_commands(char **piped_commands)
+{
+	int len;
+
+	len = 0;
+	while (piped_commands[len] != NULL)
+	{
+		/*
+		** On split la command avec les espaces
+		** On parse les variable d'environnement
+		*/
+		ft_putendl_fd(piped_commands[len], 1);
+		len++;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/09 19:37:03 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/06/10 11:07:29 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ void			shell_loop();
 ** EXECUTION PROTOTYPES
 */
 
-int				execute_commands(char **commands);
-int				run_builtin(char **command);
-int				run_system_program(char **command);
-int				is_executable(char *bin);
-void			get_absolute_path(char **command);
-char			*join_path(char *path, char *command);
+int		execute_commands(char *commands);
+int		process_commands(char **commands);
+int		execute_piped_commands(char **piped_commands);
+int		run_builtin(char **command);
+int		run_system_program(char **command);
+int		is_executable(char *bin);
+void	get_absolute_path(char **command);
+char	*join_path(char *path, char *command);
 
 /*
 ** INITIALISATION PROTOTYPES
@@ -69,15 +71,16 @@ void			append_env(char *var);
 ** PARSING PROTOTYPES
 */
 
-char			*take_input(void);
-char			**list_commands(char *line);
-char			**split_command(char *command);
-int				is_builtin(char *command);
-int				redirection(char ***command);
-int				redirect_output(char **command, int pos, int type);
-int				redirect_input(char **command, int pos);
-void			clear_redirection(void);
-void			parse_env_var(char **command);
+char	*take_input(void);
+char	**list_commands(char *line);
+char	**split_command(char *command);
+int		is_builtin(char *command);
+int		redirection(char ***command);
+int		redirect_output(char **command, int pos, int type);
+int		redirect_input(char **command, int pos);
+void	clear_redirection(void);
+void	parse_env_var(char **command);
+char	**parse_pipe(char *command);
 
 /*
 ** UTILS PROTOTYPES
