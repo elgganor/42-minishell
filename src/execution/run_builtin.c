@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/09 19:37:33 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/06/12 16:04:25 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	run_builtin(char **command)
     status = builtin_cd(command);
 	else if (!ft_strcmp(command[0], "echo"))
  	  builtin_echo(command);
-	// else if (!ft_strcmp(command[0], "export"))
-	// 	builtin_export(command);
+	else if (!ft_strcmp(command[0], "export"))
+		builtin_export(command);
 	// else if (!ft_strcmp(command[0], "unset"))
 	// 	builtin_unset(command);
 	// else if (!ft_strcmp(command[0], "env"))

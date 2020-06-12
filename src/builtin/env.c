@@ -6,7 +6,7 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 11:56:23 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:30:16 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/06/12 16:06:27 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int	builtin_env()
 		ft_putstr(env->variable);
 		env = env->next;
 	}
+  return (1);
 }

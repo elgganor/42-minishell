@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/10 11:07:29 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/06/12 16:05:05 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ int				builtin_cd(char **command);
 int				builtin_env(void);
 int				builtin_exit(void);
 int       builtin_echo(char **command);
+int       builtin_export(char **command);
 
 #endif
