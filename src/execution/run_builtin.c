@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/12 16:04:25 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/06/23 13:09:23 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	run_builtin(char **command)
 		builtin_export(command);
 	// else if (!ft_strcmp(command[0], "unset"))
 	// 	builtin_unset(command);
-	// else if (!ft_strcmp(command[0], "env"))
-	// 	builtin_env(command);
+	else if (!ft_strcmp(command[0], "env"))
+     	builtin_env();
   else if (!ft_strcmp(command[0], "exit"))
 	{
 	  builtin_exit();
