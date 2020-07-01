@@ -6,17 +6,17 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/10 11:04:14 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:56:02 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-/*
-** call the right function to execute the command
-**
-** @param char**: command to execute
-** @return int: status of execution
+/**
+* call the right function to execute the command
+*
+* @param char** command to execute
+* @return int status of execution
 */
 
 int	execute_command(char **command)
@@ -37,11 +37,11 @@ int	execute_command(char **command)
 	return (status);
 }
 
-/*
-** Check if the command is a builtin or a system program and execute it
-**
-** @param    char**: the command to execute
-** @return   int: status of the execution
+/**
+* Check if the command is a builtin or a system program and execute it
+*
+* @param    char** the command to execute
+* @return   int status of the execution
 */
 
 int	execute_commands(char *command)
@@ -61,11 +61,11 @@ int	execute_commands(char *command)
 	return (status);
 }
 
-/*
-** Execute commands with pipe
-**
-** @param char**: list of piped commands
-** @return int: status of the execution
+/**
+* Execute commands with pipe
+*
+* @param char** list of piped commands
+* @return int status of the execution
 */
 
 int	execute_piped_commands(char **piped_commands)
