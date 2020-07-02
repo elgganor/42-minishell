@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/01 10:56:02 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/02 10:04:36 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	execute_piped_commands(char **piped_commands)
 		** On split la command avec les espaces
 		** On parse les variable d'environnement
 		*/
+		ft_putstr("piped => ");
 		ft_putendl_fd(piped_commands[len], 1);
 		len++;
 	}

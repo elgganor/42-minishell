@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/12 16:05:05 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/02 10:24:37 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # define SYSPROG 0
 # define BUILTIN 1
+
+# define EXIT_STATUS 0
+# define SUCCESS_STATUS 1
+# define FAILURE_STATUS 2
 
 # include <stdio.h>
 # include <string.h>
