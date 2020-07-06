@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/02 10:24:37 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/06 16:28:21 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,18 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
+typedef struct s_new
+{
+    char            *cmd;
+    struct s_new    *next;
+}               t_new;
+
 /*
 ** ===== MINISHELL PROTOTYPES =====
 */
 
 t_env			*g_env;
+t_new           *g_new;
 void			shell_loop();
 
 /*
