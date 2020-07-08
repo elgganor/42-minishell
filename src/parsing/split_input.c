@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_commands.c                                    :+:      :+:    :+:   */
+/*   split_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohamed <mohamed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/21 16:19:29 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 10:01:00 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/07/08 17:17:27 by mohamed           #+#    #+#             */
+/*   Updated: 2020/07/08 17:17:32 by mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-/*
-** @description
-**
-** @param
-** @return
-*/
 
-char	**list_commands(char *line)
+char	**split_input(char *input)
 {
 	char	**commands;
 	char	*tmp;
 	int		i;
 
 	i = 0;
-	commands = ft_split(line, ';');
+	commands = ft_split(input, ';');
 	while (commands[i] != NULL)
 	{
 		tmp = ft_strtrim(commands[i], " ");

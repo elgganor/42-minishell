@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohamed <mohamed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 09:55:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/02 10:07:53 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:01:38 by mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**parse_pipe(char *command)
 	i = 0;
 	if ((piped_commands = ft_split(command, '|')) == NULL)
 		return (NULL);
-	if (ft_arrlen(piped_commands) <= 1)
+	if (ft_arrlen(piped_commands) == 1)
 	{
 		free_split(piped_commands);
 		return (NULL);

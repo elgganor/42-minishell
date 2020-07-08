@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_command.c                                  :+:      :+:    :+:   */
+/*   process_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohamed <mohamed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 13:05:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/01 10:56:17 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/08 17:19:44 by mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/**
-* @description
-*
-* @param char** list of commands
-* @return int status of command
-*/
 
 int	process_commands(char **commands)
 {
