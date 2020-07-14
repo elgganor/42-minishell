@@ -4,7 +4,7 @@ INC=-I./inc -I./libft/inc
 FLAGS=-Wall -Wextra -Werror -fsanitize=address
 LIB=-L./libft -lft
 
-PARSING=parsing/list_commands.c \
+PARSING=parsing/split_input.c \
 		parsing/split_command.c \
 		parsing/is_builtin.c \
 		parsing/take_input.c \
@@ -15,7 +15,7 @@ PARSING=parsing/list_commands.c \
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \
 		execution/run_system_program.c \
-		execution/process_command.c
+		execution/process_commands.c
 
 INITIALISATION=initialisation/show_prompt.c \
 		initialisation/env.c
@@ -29,7 +29,7 @@ BUILTIN=builtin/pwd.c \
         builtin/exit.c \
         builtin/echo.c \
         builtin/env.c \
-        builtin/export.c \
+        # builtin/export.c
 
 SRC=minishell.c \
 	$(PARSING) \

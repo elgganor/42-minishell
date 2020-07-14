@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/06 16:28:21 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/14 07:27:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			append_env(char *var);
 */
 
 char	*take_input(void);
-char	**list_commands(char *line);
+char	**split_input(char *input);
 char	**split_command(char *command);
 int		is_builtin(char *command);
 int		redirection(char ***command);

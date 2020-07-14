@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/02 10:25:29 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/14 07:29:10 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	shell_loop(void)
 	{
 		show_prompt();
 		line = take_input();
-		commands = list_commands(line);
+		commands = split_input(line);
 		if (commands)
 		{
 			status = process_commands(commands);
