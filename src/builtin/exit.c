@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 14:32:32 by astriddel         #+#    #+#             */
-/*   Updated: 2020/05/28 14:36:38 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/14 16:43:52 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	builtin_exit(void)
 {
-	free_env();
+	// free_env();
 	return (0);
 }
