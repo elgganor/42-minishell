@@ -28,7 +28,7 @@ BUILTIN=builtin/pwd.c \
         builtin/cd.c \
         builtin/exit.c \
         builtin/echo.c \
-        builtin/env.c \
+        builtin/env.c
         # builtin/export.c
 
 SRC=minishell.c \
