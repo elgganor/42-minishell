@@ -22,7 +22,8 @@ INITIALISATION=initialisation/show_prompt.c \
 
 UTILS=utils/free_functions.c \
 		utils/error_handler.c \
-		utils/clear_redirection.c
+		utils/clear_redirection.c \
+		utils/pipe.c
 
 BUILTIN=builtin/pwd.c \
         builtin/cd.c \

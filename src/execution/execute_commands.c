@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/14 11:28:58 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/15 10:19:39 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,40 +75,21 @@ int	execute_piped_commands(char **piped_commands)
 	int nb_command;
 	int *pipes;
 
-	len = 0;
+	len = -1;
 	nb_command = ft_arrlen(piped_commands);
-	pipes = (int *)malloc(sizeof(int) * (nb_command - 1) * 2);
-	for (int j = 0; j < (nb_command - 1); j++)
-		pipe(pipes + (j * 2));
-	while (piped_commands[len] != NULL)
+	pipes = init_pipes(nb_command);
+	while (piped_commands[++len] != NULL)
 	{
 		if (fork() == 0)
 		{
-			if (len == 0)
-			{
-				dup2(pipes[(len * 2) + 1], 1);
-			}
-			else if (len == nb_command - 1)
-			{
-				dup2(pipes[(len - 1) * 2], 0);
-			}
-			else
-			{
-				dup2(pipes[(len - 1) * 2], 0);
-				dup2(pipes[(len * 2) + 1], 1);
-			}
-			for (int j = 0; j < (nb_command - 1) * 2; j++)
-				close(pipes[j]);
+			dup_pipe(pipes, len, nb_command);
+			close_pipes(pipes, nb_command);
 			execute_commands(piped_commands[len]);
 		}
-		len++;
 	}
-
-	for (int j = 0; j < (nb_command - 1) * 2; j++)
-		close(pipes[j]);
-
-	for (int i = 0; i < nb_command; i++)
+	close_pipes(pipes, nb_command);
+	len = -1;
+	while (++len < nb_command)
 		wait(&status);
-
 	return (1);
 }
