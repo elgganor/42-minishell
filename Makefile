@@ -1,7 +1,7 @@
 NAME=minishell
 
 INC=-I./inc -I./libft/inc
-FLAGS=-Wall -Wextra -Werror -fsanitize=address
+FLAGS=-Wall -Wextra -Werror
 LIB=-L./libft -lft
 
 PARSING=parsing/split_input.c \

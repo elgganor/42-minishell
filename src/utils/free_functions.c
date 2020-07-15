@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 17:17:49 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 10:02:23 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/15 09:36:07 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	free_env(void)
 	{
 		current = next;
 		next = current->next;
-		free(current->variable);
+		free(current->key);
+		free(current->value);
 		free(current);
 		current = NULL;
 	}

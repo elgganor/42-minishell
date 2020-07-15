@@ -6,71 +6,71 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 13:52:05 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 10:01:31 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/15 09:58:35 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-/*
-** @description
-**
-** @param
-** @return
+/**
+* @description
+*
+* @param char* key of the variable
+* @return char* value of the variable
 */
 
-char	*get_env_var(char *var)
+char	*get_env_var(char *key)
 {
 	t_env	*env;
-	char	*tmp_var;
 
-	tmp_var = ft_strjoin(var, "=");
 	env = g_env;
 	while (env != NULL)
 	{
-		if (ft_strncmp(env->variable, tmp_var, ft_strlen(tmp_var)) == 0)
+		if (ft_strcmp(env->key, key) == 0)
 		{
-			free(tmp_var);
-			return (ft_strchr(env->variable, '=') + 1);
+			return (env->value);
 		}
 		env = env->next;
 	}
-	free(tmp_var);
 	return (NULL);
 }
 
-/*
-** @description
-**
-** @param
-** @return
+/**
+* Append a new variable to the global env linked list
+*
+* @param char* The variable to append
 */
 
 void	append_env(char *var)
 {
 	t_env	*new;
 	t_env	*last;
+	char	**tmp;
 
 	if (!(new = (t_env *)malloc(sizeof(t_env))))
 		return ;
-	new->next = NULL;
-	new->variable = ft_strdup(var);
-	last = g_env;
-	if (!g_env)
-		g_env = new;
-	else
+	if ((tmp = ft_split(var, '=')) != NULL && tmp[0] != NULL && tmp[1] != NULL)
 	{
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
+		new->key = ft_strdup(tmp[0]);
+		new->value = ft_strdup(tmp[1]);
+		free_split(tmp);
+		new->next = NULL;
+		last = g_env;
+		if (!g_env)
+			g_env = new;
+		else
+		{
+			while (last->next != NULL)
+				last = last->next;
+			last->next = new;
+		}
 	}
 }
 
-/*
-** @description
-**
-** @param
-** @return
+/**
+* initialise the global environment linked list wich containes variables
+*
+* @param char** array of environment variable
 */
 
 void	init_env(char **env)

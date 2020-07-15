@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/14 09:10:36 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/15 09:58:47 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@
 
 typedef struct	s_env
 {
-	char			*variable;
+	char			*key;
+	char			*value;
 	struct s_env	*next;
 }				t_env;
 
@@ -83,7 +84,7 @@ char			*join_path(char *path, char *command);
 
 void			show_prompt(void);
 void			init_env(char **env);
-char			*get_env_var(char *var);
+char			*get_env_var(char *key);
 void			append_env(char *var);
 
 /*
