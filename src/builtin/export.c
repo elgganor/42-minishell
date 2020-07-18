@@ -6,15 +6,15 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/16 19:37:56 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/18 23:20:19 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-int    display_export(char *command)
+int    display_export(t_env *new)
 {
-    t_env   *new;
+/*    
     char    *equal;
     char    *last_var;
 
@@ -36,12 +36,25 @@ int    display_export(char *command)
             last_var = "\0";
             ft_putstr("declare -x ");
             ft_putstr(new->key);
+            ft_putstr("=");
             ft_putstr(new->value);
             ft_putstr("\n");
             new = new->next;
         }
     }
     return (1);
+*/
+    new = g_env;
+    while (new != NULL)
+    {
+        ft_putstr("declare -x ");
+        ft_putstr(new->key);
+        ft_putstr("=");
+        ft_putstr(new->value);
+        ft_putstr("\n");
+        new = new->next;
+    }
+    return (0);
 }
 
 int     valid_key()
@@ -87,11 +100,11 @@ int     builtin_export(char *command, t_env *new)
 {
     if (!command[1])
     {
-        display_export(&command[1]);
+        return (display_export(new));
     }
     if (command[1])
     {
-        add_export_builtin(&command[1], new);
+        return (add_export_builtin(&command[1], new));
     }
-    return (1);
+    return (0);
 }
