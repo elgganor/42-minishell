@@ -6,57 +6,92 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/06 16:30:38 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/16 19:37:56 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-/*
-
-int     builtin_export(char **command)
+int    display_export(char *command)
 {
+    t_env   *new;
     char    *equal;
-    t_env   *env;
+    char    *last_var;
 
-    equal = ft_strchr(command[1], '=');
-    env = g_env;
-    if  (equal)
-        builtin_env();
-    else
+    equal = ft_strchr(&command[1], '=');
+    new = g_env;
+    last_var = "/usr/bin/env";
+
+    while (new != NULL)
     {
-        builtin_env();
-        ft_putstr(command[1]);
+        if (!equal)
+        {
+            ft_putstr("declare -x ");
+            ft_putstr(new->key);
+            ft_putstr("\n");
+            new = new->next;
+        }
+        if (ft_strcmp(last_var, new->value) == 0)
+        {
+            last_var = "\0";
+            ft_putstr("declare -x ");
+            ft_putstr(new->key);
+            ft_putstr(new->value);
+            ft_putstr("\n");
+            new = new->next;
+        }
     }
     return (1);
 }
 
-*/
-
-int     builtin_export(char **command)
+int     valid_key()
 {
-    t_new   *new;
-    t_env   *env;
+    char    *key;
+    int     i;
 
-    env = g_env;
-    new = g_new;
-    new->next = NULL;
-    while (env != NULL)
+    key = NULL;
+    i = 0;
+    if (!key)
+        return (0);
+    if (!ft_isalpha(key[0] || !ft_strncmp(&key[0], "_", 2)))
     {
-        if (command[1])
+        ft_putstr("key must begin by a letter or _");
+        return (0);
+    }
+    while (key[i++])
+    {
+        if (!ft_isalpha(key[i]) || !ft_isdigit(key[i]) || !ft_strncmp(&key[i], "_", 2))
         {
-            if (!(new = malloc(sizeof(t_new))))
-                return (0);
-            if (!(new->cmd = ft_strdup(command[1])))
-                return (0);
-            while (env->next != NULL)
-                env = env->next;
-            env->next = new;
+            ft_putstr("variable must contain only letters, digits or _");
+            return (0);
         }
-        ft_putstr("declare -x ");
-        ft_putstr(env->variable);
-        ft_putstr("\n");
-        env = env->next;
+    }
+    return (1);
+}
+
+int    add_export_builtin(char *command, t_env *new)
+{
+    char    *equal;
+
+    new = g_env;
+    equal = ft_strchr(&command[1], '=');
+    if (valid_key() == 1)
+    {
+        new->key = equal ? ft_substr(&command[1], 0, equal - &command[1]) : ft_strdup(&command[1]);
+        new->value = equal ? ft_strdup(equal) : NULL;
+    }
+    return (0);
+}
+
+int     builtin_export(char *command, t_env *new)
+{
+    if (!command[1])
+    {
+        display_export(&command[1]);
+    }
+    if (command[1])
+    {
+        add_export_builtin(&command[1], new);
     }
     return (1);
 }
