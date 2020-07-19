@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/06/08 10:21:05 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/07/19 10:36:52 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ DISPLAY=display/ft_putnbr.c \
 	display/ft_putnbr_fd.c \
 	display/ft_putstr_fd.c \
 	display/ft_putchar.c \
-	display/ft_putstr.c 
+	display/ft_putstr.c \
+	display/ft_putendl.c
 CHECKER=checker/ft_islower.c \
 	checker/ft_isupper.c \
 	checker/ft_isalnum.c \

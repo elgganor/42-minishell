@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/16 18:56:12 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/19 10:38:46 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@
 int	run_builtin(char **command)
 {
 	int	status;
-    t_env   *new;
 
-    new = g_env;
 	status = 0;
 	if (!ft_strcmp(command[0], "pwd"))
 		status = builtin_pwd();
@@ -33,7 +31,7 @@ int	run_builtin(char **command)
 	else if (!ft_strcmp(command[0], "echo"))
         builtin_echo(command);
 	else if (!ft_strcmp(command[0], "export"))
-        builtin_export(command[0], new);
+        builtin_export(command);
 	// else if (!ft_strcmp(command[0], "unset"))
 	// 	builtin_unset(command);
 	else if (!ft_strcmp(command[0], "env"))

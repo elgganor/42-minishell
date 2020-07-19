@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/18 23:20:19 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/19 10:39:26 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-int    display_export(t_env *new)
+int    display_export()
 {
+    t_env *current;
 /*    
     char    *equal;
     char    *last_var;
@@ -44,17 +45,16 @@ int    display_export(t_env *new)
     }
     return (1);
 */
-    new = g_env;
-    while (new != NULL)
+    current = g_env;
+    while (current != NULL)
     {
         ft_putstr("declare -x ");
-        ft_putstr(new->key);
+        ft_putstr(current->key);
         ft_putstr("=");
-        ft_putstr(new->value);
-        ft_putstr("\n");
-        new = new->next;
+        ft_putendl(current->value);
+        current = current->next;
     }
-    return (0);
+    return (1);
 }
 
 int     valid_key()
@@ -82,29 +82,30 @@ int     valid_key()
     return (1);
 }
 
-int    add_export_builtin(char *command, t_env *new)
+int    add_export_builtin(char *command)
 {
     char    *equal;
+    t_env *current;
 
-    new = g_env;
+    current = g_env;
     equal = ft_strchr(&command[1], '=');
     if (valid_key() == 1)
     {
-        new->key = equal ? ft_substr(&command[1], 0, equal - &command[1]) : ft_strdup(&command[1]);
-        new->value = equal ? ft_strdup(equal) : NULL;
+        current->key = equal ? ft_substr(&command[1], 0, equal - &command[1]) : ft_strdup(&command[1]);
+        current->value = equal ? ft_strdup(equal) : NULL;
     }
     return (0);
 }
 
-int     builtin_export(char *command, t_env *new)
+int     builtin_export(char **command)
 {
     if (!command[1])
     {
-        return (display_export(new));
+        return (display_export());
     }
-    if (command[1])
-    {
-        return (add_export_builtin(&command[1], new));
-    }
+    // if (command[1])
+    // {
+    //     return (add_export_builtin(&command[1]));
+    // }
     return (0);
 }
