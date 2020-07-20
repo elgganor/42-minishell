@@ -6,7 +6,7 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:52:16 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/20 13:50:50 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/20 15:47:28 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ int	builtin_cd(char **command)
         printf("ERREUR : %s", strerror(errno));
         return (0);
     }
-    else if (ft_strcmp(directory->key, "OLDPWD") == 0)
-    {
-        directory->value = getcwd(directory->value, ft_strlen(directory->value));
+    while (directory != NULL)
+    {    
+        if (ft_strcmp(directory->key, "OLDPWD") == 0)
+        {
+            directory->value = getcwd(directory->value, ft_strlen(directory->value));
+        }
+        else if (ft_strcmp(directory->key, "PWD") == 0)
+        {
+            chdir(command[1]);
+            directory->value = getcwd(directory->value, ft_strlen(directory->value));
+        }
+        directory = directory->next;
     }
-    else if (ft_strcmp(directory->key, "PWD") == 0)
-    {
-        chdir(command[1]);
-        directory->value = getcwd(directory->value, ft_strlen(directory->value));
-    }
-	return (1);
+    return (1);
 }
