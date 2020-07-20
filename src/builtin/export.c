@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/19 10:39:26 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/20 13:47:11 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int    display_export()
 {
     t_env *current;
-/*    
+/*
     char    *equal;
     char    *last_var;
 
@@ -82,16 +82,16 @@ int     valid_key()
     return (1);
 }
 
-int    add_export_builtin(char *command)
+int    add_export_builtin(char **command)
 {
     char    *equal;
-    t_env *current;
+    t_env   *current;
 
     current = g_env;
-    equal = ft_strchr(&command[1], '=');
+    equal = ft_strchr(command[1], '=');
     if (valid_key() == 1)
     {
-        current->key = equal ? ft_substr(&command[1], 0, equal - &command[1]) : ft_strdup(&command[1]);
+        current->key = equal ? ft_substr(command[1], 0, equal - command[1]) : ft_strdup(command[1]);
         current->value = equal ? ft_strdup(equal) : NULL;
     }
     return (0);
@@ -103,9 +103,9 @@ int     builtin_export(char **command)
     {
         return (display_export());
     }
-    // if (command[1])
-    // {
-    //     return (add_export_builtin(&command[1]));
-    // }
-    return (0);
+    if (command[1])
+    {
+        return (add_export_builtin(command));
+    }
+    return (1);
 }
