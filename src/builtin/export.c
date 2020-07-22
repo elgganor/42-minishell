@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/22 09:19:58 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/22 23:25:23 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,65 +15,37 @@
 int    display_export()
 {
     t_env *current;
-/*
-    char    *equal;
-    char    *last_var;
-
-    equal = ft_strchr(&command[1], '=');
-    new = g_env;
-    last_var = "/usr/bin/env";
-
-    while (new != NULL)
-    {
-        if (!equal)
-        {
-            ft_putstr("declare -x ");
-            ft_putstr(new->key);
-            ft_putstr("\n");
-            new = new->next;
-        }
-        if (ft_strcmp(last_var, new->value) == 0)
-        {
-            last_var = "\0";
-            ft_putstr("declare -x ");
-            ft_putstr(new->key);
-            ft_putstr("=");
-            ft_putstr(new->value);
-            ft_putstr("\n");
-            new = new->next;
-        }
-    }
-    return (1);
-*/
     current = g_env;
     while (current != NULL)
     {
         ft_putstr("declare -x ");
         ft_putstr(current->key);
-        ft_putstr("=");
-        ft_putendl(current->value);
+        if (current->value)
+        {
+            ft_putstr("=\"");
+            ft_putstr(current->value);
+            ft_putstr("\"");
+        }
+        ft_putstr("\n");
         current = current->next;
     }
     return (1);
 }
 
-int     valid_key()
+int     valid_key(char *key)
 {
-    char    *key;
     int     i;
-
-    key = NULL;
     i = 0;
     if (!key)
         return (0);
-    if (!ft_isalpha(key[0] || !ft_strncmp(&key[0], "_", 2)))
+    if (!ft_isalpha(key[0]) && key[0] != '_')
     {
         ft_putstr("key must begin by a letter or _");
         return (0);
     }
-    while (key[i++])
+    while (key[++i])
     {
-        if (!ft_isalpha(key[i]) || !ft_isdigit(key[i]) || !ft_strncmp(&key[i], "_", 2))
+        if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] != '_')
         {
             ft_putstr("variable must contain only letters, digits or _");
             return (0);
@@ -86,13 +58,17 @@ int    add_export_builtin(char **command)
 {
     char    *equal;
     t_env   *current;
-
+    t_env   *new_var;
     current = g_env;
+    while (current->next)
+        current = current->next;
+    current->next = ft_calloc(1, sizeof(t_env)); // pour initialiser en meme temps. Equivaut à  current->next = malloc(sizeof(t_env)); new_var = current->next; new_var->next = NULL / current->next->next = NULL 
+    new_var = current->next;
     equal = ft_strchr(command[1], '=');
-    if (valid_key() == 1)
+    new_var->key = equal ? ft_substr(command[1], 0, equal - command[1]) : ft_strdup(command[1]);
+    if (valid_key(new_var->key) == 1 && ft_strcmp(new_var->key, "_"))
     {
-        current->key = equal ? ft_substr(command[1], 0, equal - command[1]) : ft_strdup(command[1]);
-        current->value = equal ? ft_strdup(equal) : NULL;
+        new_var->value = equal ? ft_strdup(equal + 1) : NULL;
     }
     return (1);
 }
