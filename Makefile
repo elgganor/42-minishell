@@ -30,7 +30,8 @@ BUILTIN=builtin/pwd.c \
         builtin/exit.c \
         builtin/echo.c \
         builtin/env.c \
-        builtin/export.c
+        builtin/export.c \
+        builtin/unset.c
 
 SRC=minishell.c \
 	$(PARSING) \
