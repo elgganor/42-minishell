@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/23 11:22:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:58:15 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <signal.h>
 # include <sys/stat.h>
 # include <errno.h>
+# include <sys/wait.h>
 
 /*
 **----------------------------------------**
