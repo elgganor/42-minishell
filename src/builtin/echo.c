@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:53:43 by astriddel         #+#    #+#             */
-/*   Updated: 2020/06/23 17:46:31 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/24 11:24:25 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include <minishell.h>
 
 int     builtin_echo(char **command)
 {
@@ -19,14 +19,11 @@ int     builtin_echo(char **command)
     i = 1;
     while (command[i] != NULL)
     {
-        if (command[i + 1] == NULL)
-        {
-            ft_putstr(command[i]);
-            return (1);
-        }
         ft_putstr(command[i]);
-        write(1, " ", 1);
+        if (command[i + 1] != NULL)
+            ft_putchar(' ');
         i++;
     }
+    ft_putchar('\n');
     return (1);
 }
