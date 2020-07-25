@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/22 23:25:23 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/25 15:03:51 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int     valid_key(char *key)
         return (0);
     if (!ft_isalpha(key[0]) && key[0] != '_')
     {
-        ft_putstr("key must begin by a letter or _");
+        ft_putstr("key must begin by a letter or _\n");
         return (0);
     }
     while (key[++i])
     {
         if (!ft_isalpha(key[i]) && !ft_isdigit(key[i]) && key[i] != '_')
         {
-            ft_putstr("variable must contain only letters, digits or _");
+            ft_putstr("variable must contain only letters, digits or _\n");
             return (0);
         }
     }
@@ -68,6 +68,15 @@ int    add_export_builtin(char **command)
     new_var->key = equal ? ft_substr(command[1], 0, equal - command[1]) : ft_strdup(command[1]);
     if (valid_key(new_var->key) == 1 && ft_strcmp(new_var->key, "_"))
     {
+        if (ft_strcmp(new_var->key, current->key) == 0)
+        {
+            free(current->key);
+            free(current->value);
+            current->key = NULL;
+            current->value = NULL;
+            current->key = new_var->key;
+            current->value = new_var->value;
+        }
         new_var->value = equal ? ft_strdup(equal + 1) : NULL;
     }
     return (1);
