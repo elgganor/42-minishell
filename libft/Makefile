@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/07/19 10:36:52 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/07/28 10:08:33 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CHECKER=checker/ft_islower.c \
 	checker/ft_isalpha.c \
 	checker/ft_isascii.c \
 	checker/ft_isdigit.c \
-	checker/ft_isprint.c
+	checker/ft_isprint.c \
+	checker/ft_isquote.c
 CONVERT=convert/ft_tolower.c \
 	convert/ft_toupper.c \
 	convert/ft_ltohex.c \

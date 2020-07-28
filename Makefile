@@ -10,7 +10,8 @@ PARSING=parsing/split_input.c \
 		parsing/take_input.c \
 		parsing/redirection.c \
 		parsing/env_var.c \
-		parsing/pipe.c
+		parsing/pipe.c \
+		parsing/quotes.c
 
 EXECUTION=execution/execute_commands.c \
 		execution/run_builtin.c \

@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/23 11:32:13 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/28 09:53:45 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	shell_loop(void)
 	{
 		show_prompt();
 		line = take_input();
-		commands = split_input(line);
+		commands = split_input(line); // split with semicolon
 		if (commands)
 		{
 			status = process_commands(commands);
@@ -40,7 +40,6 @@ void	shell_loop(void)
 			ft_puterr("Impossible to treat commands");
 		}
 		free(line);
-		g_status = status;
 	}
 	free_env();
 }
