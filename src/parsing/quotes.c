@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 09:59:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 17:06:13 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 18:15:12 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	process_quotes(char **command)
 		}
 		i++;
 	}
-	printf("%s\n", *command);
 	if (state_of_quote != 0)
 		ft_puterr("Unclosed quotes");
 }
