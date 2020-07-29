@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/25 15:03:51 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/07/29 17:37:09 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,34 @@ int    add_export_builtin(char **command)
     t_env   *current;
     t_env   *new_var;
     current = g_env;
-    while (current->next)
-        current = current->next;
-    current->next = ft_calloc(1, sizeof(t_env)); // pour initialiser en meme temps. Equivaut à  current->next = malloc(sizeof(t_env)); new_var = current->next; new_var->next = NULL / current->next->next = NULL 
-    new_var = current->next;
+    new_var = ft_calloc(1, sizeof(t_env)); // pour initialiser en meme temps. Equivaut à  current->next = malloc(sizeof(t_env)); new_var = current->next; new_var->next = NULL / current->next->next = NULL
     equal = ft_strchr(command[1], '=');
     new_var->key = equal ? ft_substr(command[1], 0, equal - command[1]) : ft_strdup(command[1]);
-    if (valid_key(new_var->key) == 1 && ft_strcmp(new_var->key, "_"))
+    if (ft_strcmp(new_var->key, "_"))
+    // (valid_key(new_var->key) == 1 &&
     {
-        if (ft_strcmp(new_var->key, current->key) == 0)
+        current = g_env;
+        while (current)
         {
-            free(current->key);
-            free(current->value);
-            current->key = NULL;
-            current->value = NULL;
-            current->key = new_var->key;
-            current->value = new_var->value;
+            new_var->value = equal ? ft_strdup(equal + 1) : NULL;
+            if (ft_strcmp(new_var->key, current->key) == 0)
+            {
+                if (new_var->value)
+                {
+                    free(current->value);
+                    current->value = ft_strdup(equal + 1);
+                    free(new_var->key);
+                    free(new_var);
+                }
+                return (1);
+            }
+            current = current->next;
         }
-        new_var->value = equal ? ft_strdup(equal + 1) : NULL;
     }
+    current = g_env;
+    while (current->next)
+        current = current->next;
+    current->next = new_var;
     return (1);
 }
 
