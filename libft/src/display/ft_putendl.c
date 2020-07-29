@@ -6,13 +6,13 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 10:35:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/19 10:36:20 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 10:20:00 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void ft_putendl(char *s)
+void	ft_putendl(char *s)
 {
 	if (s)
 	{

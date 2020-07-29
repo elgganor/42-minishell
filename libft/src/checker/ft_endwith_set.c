@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isquote.c                                       :+:      :+:    :+:   */
+/*   ft_endwith_set.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/28 10:06:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 10:11:18 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/07/29 10:15:55 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/07/29 10:18:58 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isquote(int c)
+int	ft_endwith_set(char *str, char *set)
 {
-	return (c == 34 || c == 39);
+	int i;
+
+	if (str != NULL && set != NULL)
+	{
+		i = 0;
+		while (set[i] != '\0')
+		{
+			if (ft_endwith(str, set[i]))
+				return (1);
+			i++;
+		}
+	}
+	return (0);
 }

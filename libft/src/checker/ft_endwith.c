@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isquote.c                                       :+:      :+:    :+:   */
+/*   ft_endwith.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/28 10:06:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 10:11:18 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/07/29 10:12:42 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/07/29 10:14:18 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isquote(int c)
+int	ft_endwith(char *str, int c)
 {
-	return (c == 34 || c == 39);
+	int	len;
+
+	if (str != NULL)
+	{
+		len = ft_strlen(str);
+		return (str[len - 1] == c);
+	}
+	return (0);
 }
