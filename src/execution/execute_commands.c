@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/15 10:19:39 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 12:18:50 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ int	execute_commands(char *command)
 	int			status;
 
 	status = 1;
-	if ((commandArgs = split_command(command)) != NULL)
+	if ((commandArgs = split_command(command)) != NULL) // todo: handle string
 	{
-		parse_env_var(commandArgs);
 		if (redirection(&commandArgs))
 			status = execute_command(commandArgs);
 		free_split(commandArgs);

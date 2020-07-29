@@ -6,68 +6,69 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 09:59:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/28 10:39:09 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 14:21:31 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int has_quotes(char *command)
-{
-	int len;
+/*
+* @description
+*
+* @param
+* @return
+*/
 
-	len = 0;
-	while (command[len])
+int		handle_state_of_quote(char c, int state_of_quote)
+{
+	if (c == '"')
 	{
-		if (ft_isquote(command[len]))
-			return (command[len] == 34 ? 1 : 2);
-		len++;
+		if (state_of_quote == 1)
+		{
+			state_of_quote = 0;
+		}
+		else if (state_of_quote == 0)
+		{
+			state_of_quote = 1;
+		}
 	}
-	return (0);
+	else if (c == '\'')
+	{
+		if (state_of_quote == 2)
+		{
+			state_of_quote = 0;
+		}
+		else if (state_of_quote == 0)
+		{
+			state_of_quote = 2;
+		}
+	}
+	return (state_of_quote);
 }
 
-int		check_closed_quotes(char *command)
+/*
+* @description
+*
+* @param
+*/
+
+void	process_quotes(char **command)
 {
-	int len;
-	int nb_simple_quotes;
-	int nb_double_quotes;
+	int	i;
+	int	state_of_quote;
 
-	len = 0;
-	nb_simple_quotes = 0;
-	nb_double_quotes = 0;
-	while (command[len])
+	i= 0;
+	state_of_quote = 0;
+	while ((*command)[i] != '\0')
 	{
-		if (ft_isquote(command[len]))
+		state_of_quote = handle_state_of_quote((*command)[i], state_of_quote);
+	
+		if ((*command)[i] == '$' && state_of_quote != 2)
 		{
-			if (command[len] == 34)
-				nb_double_quotes++;
-			else
-				nb_simple_quotes++;
+			process_env(command, i);
 		}
-		len++;
+		i++;
 	}
-	return (nb_double_quotes % 2 == 0 && nb_simple_quotes % 2 == 0);
-}
-
-void	parse_quotes(char *command)
-{
-	int	quote_type;
-
-	if ((quote_type = has_quotes(command)) != 0)
-	{
-		if (!check_closed_quotes(command))
-			ft_puterr('Unclosed quotes');
-		if (quote_type == 1) // double quotes
-		{
-			// on substitue les var d'env
-		}
-		else // simple quotes
-		{
-			// on ne substitue pas les var d'env
-		}
-	}
-	else
-	{
-		// parse_env
-	}
+	if (state_of_quote != 0)
+		ft_puterr("Unclosed quotes");
 }

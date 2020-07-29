@@ -9,7 +9,7 @@ PARSING=parsing/split_input.c \
 		parsing/is_builtin.c \
 		parsing/take_input.c \
 		parsing/redirection.c \
-		parsing/env_var.c \
+		parsing/env.c \
 		parsing/pipe.c \
 		parsing/quotes.c
 

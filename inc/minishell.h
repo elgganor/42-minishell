@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/28 10:25:02 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 14:43:08 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ void			clear_redirection(void);
 void			parse_env_var(char **command);
 char			**parse_pipe(char *command);
 void			parse_quotes(char *command);
+char			*extract_var_key(char *command);
+void			process_quotes(char **command);
+char			*get_key(char *command, int start, int end);
+void			process_env(char **command, int start);
 
 /*
 **----------------------------------------**

@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_var.c                                          :+:      :+:    :+:   */
+/*   ft_slice.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 10:16:49 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 11:00:38 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/07/29 13:55:04 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/07/29 14:20:43 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <libft.h>
 
-void	parse_env_var(char **command)
+char	*ft_slice(char *str, int start, int end)
 {
-	int		i;
-	int		len;
-	char	*var;
-	char	*var_name;
+	char	*dest;
 
-	i = 0;
-	while (command[i] != NULL)
-	{
-		if (!ft_strncmp(command[i], "$", 1))
-		{
-			len = ft_strlen(command[i]);
-			var_name = ft_substr(command[i], 1, len - 1);
-			var = get_env_var(var_name) == NULL ? "" : get_env_var(var_name);
-			ft_substitute(&command[i], var);
-			free(var_name);
-		}
-		i++;
-	}
+	if (!str || start > end)
+		return (NULL);
+	dest = ft_substr(str, start, (end - start) + 1);
+	return (dest);
 }
