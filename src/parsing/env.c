@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 10:22:14 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 14:50:51 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/29 17:04:13 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,22 @@ char	*get_key(char *command, int start, int end)
 	return (var_name);
 }
 
-void	substitute_env_variable(char **command, char *key, int start, int end)
+void	substitute_env_variable(char **command, char *value, int start, int end)
 {
 	char	*first_part;
 	char	*last_part;
-	// char	*dest;
-	(void)key;
+	char	*dest;
+	char	*tmp;
 
 	first_part = ft_slice(*command, 0, start - 1);
 	last_part = ft_slice(*command, end, ft_strlen(*command));
+	tmp = ft_strjoin(first_part, value);
+	dest = ft_strjoin(tmp, last_part);
+	free(tmp);
+	free(first_part);
+	free(last_part);
+	free(*command);
+	*command = dest;
 }
 
 void	process_env(char **command, int start)
@@ -64,5 +71,5 @@ void	process_env(char **command, int start)
 		end++;
 	key = get_key(*command, start, end);
 	value = get_env_var(key);
-	substitute_env_variable(command, key, start, end);
+	substitute_env_variable(command, value, start, end);
 }
