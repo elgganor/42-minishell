@@ -6,24 +6,17 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 13:05:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 18:14:42 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:12:57 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-/*
-* @description
-*
-* @param
-* @return
-*/
-
 int	process_commands(char **commands)
 {
-	int	len;
-	int status;
-	char **piped_commands;
+	int		len;
+	int		status;
+	char	**piped_commands;
 
 	len = 0;
 	status = 1;

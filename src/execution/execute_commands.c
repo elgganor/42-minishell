@@ -6,18 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 12:18:50 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:12:33 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/**
-* call the right function to execute the command
-*
-* @param char** command to execute
-* @return int status of execution
-*/
 
 int	execute_command(char **command)
 {
@@ -37,42 +30,28 @@ int	execute_command(char **command)
 	return (status);
 }
 
-/**
-* Check if the command is a builtin or a system program and execute it
-*
-* @param    char** the command to execute
-* @return   int status of the execution
-*/
-
 int	execute_commands(char *command)
 {
-	char		**commandArgs;
+	char		**command_args;
 	int			status;
 
 	status = 1;
-	if ((commandArgs = split_command(command)) != NULL) // todo: handle string
+	if ((command_args = split_command(command)) != NULL)
 	{
-		if (redirection(&commandArgs))
-			status = execute_command(commandArgs);
-		free_split(commandArgs);
+		if (redirection(&command_args))
+			status = execute_command(command_args);
+		free_split(command_args);
 		clear_redirection();
 	}
 	return (status);
 }
 
-/**
-* Execute commands with pipe
-*
-* @param char** list of piped commands
-* @return int status of the execution
-*/
-
 int	execute_piped_commands(char **piped_commands)
 {
-	int len;
-	int status;
-	int nb_command;
-	int *pipes;
+	int	len;
+	int	status;
+	int	nb_command;
+	int	*pipes;
 
 	len = -1;
 	nb_command = ft_arrlen(piped_commands);

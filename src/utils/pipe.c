@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 10:02:56 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/15 10:15:28 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:06:50 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		*init_pipes(int nb_command)
 
 	if (!(pipes = (int *)malloc(sizeof(int) * (nb_command - 1) * 2)))
 	{
-		return NULL;
+		return (NULL);
 	}
 	i = 0;
 	while (i < (nb_command - 1))
@@ -27,7 +27,7 @@ int		*init_pipes(int nb_command)
 		pipe(pipes + (i * 2));
 		i++;
 	}
-	return pipes;
+	return (pipes);
 }
 
 void	close_pipes(int *pipes, int nb_command)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrouabeh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 11:59:05 by mrouabeh          #+#    #+#             */
-/*   Updated: 2019/10/28 16:02:32 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 09:45:46 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char			**ft_split(const char *s, char c)
 
 	nb_word = ft_count_word(s, c);
 	if (!s || !(res = (char **)malloc((nb_word + 1) * sizeof(char *))))
-		return (0);
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i] != '\0' && j < nb_word)
@@ -83,6 +83,6 @@ char			**ft_split(const char *s, char c)
 				i++;
 		}
 	}
-	res[j] = 0;
+	res[j] = NULL;
 	return (res);
 }

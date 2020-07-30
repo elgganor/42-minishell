@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/07/29 13:54:58 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/07/30 11:18:16 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ STRING=string/ft_split.c \
 	string/ft_strchr.c \
 	string/ft_strdup.c \
 	string/ft_strjoin.c \
+	string/ft_join_and_free.c \
 	string/ft_strlcat.c \
 	string/ft_strlcpy.c \
 	string/ft_strlen.c \

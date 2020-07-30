@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_input.c                                      :+:      :+:    :+:   */
+/*   ft_join_and_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/08 17:17:27 by mohamed           #+#    #+#             */
-/*   Updated: 2020/07/30 12:07:49 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/07/30 11:18:02 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/07/30 11:18:04 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <libft.h>
 
-char	**split_input(char *input)
+char	*ft_join_and_free(char *s1, char *s2)
 {
-	char	**commands;
 	char	*tmp;
-	int		i;
 
-	i = 0;
-	commands = ft_split(input, ';');
-	while (commands[i] != NULL)
-	{
-		tmp = ft_strtrim(commands[i], " ");
-		free(commands[i]);
-		commands[i] = ft_strdup(tmp);
-		free(tmp);
-		i++;
-	}
-	return (commands);
+	tmp = ft_strdup(s1);
+	free(s1);
+	s1 = ft_strjoin(tmp, s2);
+	free(tmp);
+	return (s1);
 }

@@ -6,33 +6,19 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 13:09:13 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 13:24:07 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:07:24 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-/*
-** @description
-**
-** @param
-** @return
-*/
-
-static int is_redirection(char *command)
+static int	is_redirection(char *command)
 {
 	if (!ft_strcmp(command, ">") || !ft_strcmp(command, ">>")
 		|| !ft_strcmp(command, "<"))
 		return (1);
 	return (0);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 static int	count_redirection(char **command)
 {
@@ -50,14 +36,7 @@ static int	count_redirection(char **command)
 	return (count);
 }
 
-/*
-** clear every redirection within the command
-**
-** @param char***: adress of the command
-** @return bool: state of the instruction
-*/
-
-int		clear_command_of_redirection(char ***command)
+int			clear_command_of_redirection(char ***command)
 {
 	int		i;
 	int		j;
@@ -82,13 +61,6 @@ int		clear_command_of_redirection(char ***command)
 	*command = tmp;
 	return (1);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 void		clear_redirection(void)
 {

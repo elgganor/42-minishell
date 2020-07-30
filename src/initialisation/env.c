@@ -6,18 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 13:52:05 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/15 09:58:35 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:13:29 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/**
-* @description
-*
-* @param char* key of the variable
-* @return char* value of the variable
-*/
 
 char	*get_env_var(char *key)
 {
@@ -34,12 +27,6 @@ char	*get_env_var(char *key)
 	}
 	return (NULL);
 }
-
-/**
-* Append a new variable to the global env linked list
-*
-* @param char* The variable to append
-*/
 
 void	append_env(char *var)
 {
@@ -66,12 +53,6 @@ void	append_env(char *var)
 		}
 	}
 }
-
-/**
-* initialise the global environment linked list wich containes variables
-*
-* @param char** array of environment variable
-*/
 
 void	init_env(char **env)
 {
