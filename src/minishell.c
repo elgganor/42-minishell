@@ -6,16 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/15 15:37:47 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 14:21:08 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:20:04 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/**
-* Main loop for the shell
-* Read, parse and execute commands
-*/
 
 void	shell_loop(void)
 {
@@ -28,7 +23,7 @@ void	shell_loop(void)
 	{
 		show_prompt();
 		line = take_input();
-		commands = split_input(line); // split with semicolon
+		commands = split_input(line);
 		if (commands)
 		{
 			status = process_commands(commands);

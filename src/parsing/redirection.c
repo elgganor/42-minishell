@@ -6,17 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/08 13:26:35 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:17:26 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/*
-** @description
-**
-** @param
-*/
 
 int	redirect_input(char **command, int pos)
 {
@@ -31,12 +25,6 @@ int	redirect_input(char **command, int pos)
 	dup2(in, 0);
 	return (1);
 }
-
-/*
-** @description
-**
-** @param
-*/
 
 int	redirect_output(char **command, int pos, int type)
 {
@@ -67,13 +55,6 @@ int	redirect_output(char **command, int pos, int type)
 	dup2(out, 1);
 	return (1);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 int	redirection(char ***command)
 {
