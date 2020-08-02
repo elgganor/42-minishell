@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/30 17:09:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/02 14:32:22 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,29 +97,33 @@ int add_export_builtin(char **command)
 int		export_variable(char *variable)
 {
 	char	**split_variable;
-	char	*value;
 	t_env	*new_env;
 	t_env	*current;
 
 	split_variable = ft_split(variable, '=');
 	current = g_env;
-	new_env = ft_calloc(1, sizeof(t_env));
-	if (split_variable != NULL)
+	if (split_variable != NULL) // TODO: && key is valid
 	{
-		new_env->key = split_variable[0];
-		new_env->value = split_variable[1]; // value ou NULL;
-		new_env->next = NULL;
 		while (current != NULL)
 		{
-			if (ft_strcmp(current->key, new_env->key))
+			if (!ft_strcmp(current->key, split_variable[0]))
 			{
-				// on remplace current par new_env
+				if (current->value != NULL)
+					free(current->value);
+				current->value = split_variable[1]; // vaut null si il n'y a pas de = et vaut value sinon
 				return (1);
 			}
 			current = current->next;
 		}
-		// on ajoute new_env à g_env
+		new_env = ft_calloc(1, sizeof(t_env));
+		current = g_env;
+		while (current->next != NULL)
+			current = current->next;
+		new_env->key = split_variable[0];
+		new_env->value = split_variable[1];
+		new_env->next = NULL;
 		current->next = new_env;
+		return (1);
 	}
 	return (0);
 }
@@ -134,8 +138,7 @@ int  builtin_export(char **command)
 	}
 	else
 	{
-		// return (add_export_builtin(command));
-		i = 0;
+		i = 1;
 		while (command[i])
 		{
 			export_variable(command[i]);
