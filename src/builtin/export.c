@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/08/02 14:32:22 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/02 18:17:24 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ int		export_variable(char *variable)
 		{
 			if (!ft_strcmp(current->key, split_variable[0]))
 			{
-				if (current->value != NULL)
-					free(current->value);
-				current->value = split_variable[1]; // vaut null si il n'y a pas de = et vaut value sinon
+                if (current->value != NULL && split_variable[1] != NULL)
+                    free(current->value);
+                current->value = split_variable[1] || ft_endwith(variable, '=') ? split_variable[1] : current->value; // vaut null si il n'y a pas de = et vaut value sinon
 				return (1);
 			}
 			current = current->next;
