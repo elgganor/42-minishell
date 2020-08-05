@@ -6,7 +6,7 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:52:16 by astriddel         #+#    #+#             */
-/*   Updated: 2020/08/02 23:50:37 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/08/05 19:19:12 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,11 @@ int     builtin_cd(char **command)
     
     oldpwd_value = getcwd(NULL, 0);
     directory = g_env;
-    new_dir = chdir(command[1]);
-    if (new_dir == -1)
-    {
-        printf("ERREUR : %s", strerror(errno));
-        return (0);
-    }
+    //new_dir = chdir(command[1]);
+    if (!command[1])
+        new_dir = chdir(get_env_var("HOME"));
     else
-    {
-        if (!command[1] || ft_strcmp(command[1], "~"))
-            new_dir = chdir(get_env_var("HOME"));
-        else
-            new_dir = chdir(command[1]);
-    } 
+        new_dir = chdir(command[1]);
     while (directory != NULL)
     {
         if (ft_strcmp(directory->key, "OLDPWD") == 0)
