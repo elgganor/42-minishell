@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 14:43:08 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/12 10:35:34 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include <limits.h>
 # include <signal.h>
 # include <sys/stat.h>
-# include <errno.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 /*
 **----------------------------------------**
@@ -107,7 +107,7 @@ void			parse_env_var(char **command);
 char			**parse_pipe(char *command);
 void			parse_quotes(char *command);
 char			*extract_var_key(char *command);
-void			process_quotes(char **command);
+void			process_quotes_and_env(char **command);
 char			*get_key(char *command, int start, int end);
 void			process_env(char **command, int start);
 
@@ -140,6 +140,6 @@ int				builtin_export(char **command);
 int				display_export();
 int				valid_key();
 int				add_export_builtin(char **command);
-int             builtin_unset(char **command);
+int				builtin_unset(char **command);
 
 #endif

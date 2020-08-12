@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 09:59:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 12:16:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/12 10:25:19 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		handle_state_of_quote(char c, int state_of_quote)
 	return (state_of_quote);
 }
 
-void	process_quotes(char **command)
+void	process_quotes_and_env(char **command)
 {
 	int	i;
 	int	state_of_quote;

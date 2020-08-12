@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 10:22:14 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 12:14:21 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/12 10:38:51 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	process_env(char **command, int start)
 	key = get_key(*command, start, end);
 	value = get_env_var(key);
 	substitute_env_variable(command, value, start, end);
+	free(key);
 }

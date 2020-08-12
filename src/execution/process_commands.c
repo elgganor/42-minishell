@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 13:05:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 12:12:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/12 10:35:53 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	process_commands(char **commands)
 	status = 1;
 	while (commands[len] != NULL)
 	{
-		process_quotes(&(commands[len]));
+		process_quotes_and_env(&(commands[len]));
 		if ((piped_commands = parse_pipe(commands[len])) != NULL)
 		{
 			status = execute_piped_commands(piped_commands);
