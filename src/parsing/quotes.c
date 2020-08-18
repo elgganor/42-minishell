@@ -6,45 +6,69 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 09:59:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/12 10:25:19 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/18 07:56:14 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int		handle_state_of_quote(char c, int state_of_quote)
+char	*trim_quotes(char *tmp, char q)
 {
-	if (c == '"')
-	{
-		if (state_of_quote == 1)
-			state_of_quote = 0;
-		else if (state_of_quote == 0)
-			state_of_quote = 1;
-	}
-	else if (c == '\'')
-	{
-		if (state_of_quote == 2)
-			state_of_quote = 0;
-		else if (state_of_quote == 0)
-			state_of_quote = 2;
-	}
-	return (state_of_quote);
+	char	set[3];
+
+	set[0] = ' ';
+	set[1] = q;
+	set[2] = '\0';
+	return (ft_strtrim(tmp, set));
 }
 
-void	process_quotes_and_env(char **command)
+char	*process_quotes(char **split, int *i, char q)
 {
-	int	i;
-	int	state_of_quote;
+	int		j;
+	char	*join;
+	char	*tmp;
+
+	j = *i;
+	tmp = ft_strdup(split[j]);
+	if (!ft_endwith(split[j], q))
+	{
+		j++;
+		while (split[j] != NULL)
+		{
+			tmp = ft_join_and_free(tmp, " ");
+			tmp = ft_join_and_free(tmp, split[j]);
+			if (ft_endwith(split[j], q))
+				break;
+			j++;
+		}
+	}
+	*i = j + 1;
+	join = trim_quotes(tmp, q);
+	free(tmp);
+	return (join);
+}
+
+char	**join_quotes(char **split)
+{
+	int		i;
+	int		j;
+	char	**dest;
 
 	i = 0;
-	state_of_quote = 0;
-	while ((*command)[i] != '\0')
+	j = 0;
+	if (!(dest = (char **)malloc(sizeof(char *) * (ft_arrlen(split) + 1))))
+		return (NULL);
+	while (split[i] != NULL)
 	{
-		state_of_quote = handle_state_of_quote((*command)[i], state_of_quote);
-		if ((*command)[i] == '$' && state_of_quote != 2)
-			process_env(command, i);
-		i++;
+		if (ft_startwith(split[i], '"'))
+			dest[j++] = process_quotes(split, &i, '"');
+		else if (ft_startwith(split[i], '\''))
+			dest[j++] = process_quotes(split, &i, '\'');
+		else
+			dest[j++] = ft_strdup(split[i++]);
 	}
-	if (state_of_quote != 0)
-		ft_puterr("Unclosed quotes");
+	dest[j] = NULL;
+	while (j++ < ft_arrlen(split))
+		free(dest[j]);
+	return (dest);
 }

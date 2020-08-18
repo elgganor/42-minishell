@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 12:12:33 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/17 11:53:36 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ int	execute_commands(char *command)
 	status = 1;
 	if ((command_args = split_command(command)) != NULL)
 	{
-		if (redirection(&command_args))
-			status = execute_command(command_args);
+		// if (redirection(&command_args))
+			// status = execute_command(command_args);
+		// clear_redirection();
+		int i = 0;
+		while (command_args[i] != NULL)
+		{
+			printf("[%d] => %s\n", i, command_args[i]);
+			i++;
+		}
 		free_split(command_args);
-		clear_redirection();
 	}
 	return (status);
 }
