@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 12:17:26 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/19 10:03:55 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,22 @@ int	redirect_output(char **command, int pos, int type)
 	int	out;
 
 	out = 1;
-	if (command[pos + 1] != NULL)
+	if (command[pos + 1] != NULL && type == 0)
 	{
-		if (type == 0)
+		if ((out = open(command[pos + 1], O_CREAT | O_WRONLY,
+			S_IWUSR | S_IRUSR)) == -1)
 		{
-			if ((out = open(command[pos + 1], O_CREAT | O_WRONLY,
-				S_IWUSR | S_IRUSR)) == -1)
-			{
-				ft_puterr("Impossible to redirect output");
-				return (0);
-			}
+			ft_puterr("Impossible to redirect output");
+			return (0);
 		}
-		else if (type == 1)
+	}
+	else if (command[pos + 1] != NULL && type == 1)
+	{
+		if ((out = open(command[pos + 1], O_CREAT | O_WRONLY | O_APPEND,
+			S_IWUSR | S_IRUSR)) == -1)
 		{
-			if ((out = open(command[pos + 1], O_CREAT | O_WRONLY | O_APPEND,
-				S_IWUSR | S_IRUSR)) == -1)
-			{
-				ft_puterr("Impossible to redirect output");
-				return (0);
-			}
+			ft_puterr("Impossible to redirect output");
+			return (0);
 		}
 	}
 	dup2(out, 1);
