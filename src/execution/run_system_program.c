@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/06/03 10:01:51 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/21 11:00:55 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,19 @@ void	get_absolute_path(char **command)
 		path = ft_strdup("/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
 	if (*command[0] != '/' && ft_strncmp(*command, "./", 2) != 0)
 	{
-		path_split = ft_split(path, ':');
-		i = -1;
-		while (path_split[++i] != NULL)
+		bin = join_path("/", *command);
+		if (!is_executable(bin))
 		{
-			bin = join_path(path_split[i], *command);
-			if (bin == NULL)
-				break ;
-			if (is_executable(bin))
-				break ;
+			path_split = ft_split(path, ':');
+			i = -1;
+			while (path_split[++i] != NULL)
+			{
+				bin = join_path(path_split[i], *command);
+				if (bin == NULL || is_executable(bin))
+					break;
+			}
+			free_split(path_split);
 		}
-		free_split(path_split);
 		free(*command);
 		*command = bin;
 	}
