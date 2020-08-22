@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/08/02 21:10:10 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/08/22 17:27:55 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,85 @@ int  valid_key(char *key)
 			ft_putstr("variable must contain only letters, digits or _\n");
 			return (0);
 		}
+	}
+	return (1);
+}
+
+static int		env_size(t_env *env)
+{
+    int i;
+
+    i = 0;
+	while (env)
+	{
+		i++;
+		env = env->next;
+	}
+	return (i);
+}
+
+static t_env	*get_by_id(t_env *env, int n)
+{
+    int i;
+
+    i = -1;
+	while (++i < n)
+		env = env->next;
+	return (env);
+}
+
+static void     sort_by_ascii(t_env *env, int *t, int size)
+{
+    int i;
+	int tmp;
+    int is_sorted;
+
+    i = -1;
+	is_sorted = 0;
+	while (++i < size)
+		t[i] = i;
+	while (is_sorted == 0)
+	{
+		is_sorted = 1;
+		i = -1;
+		while (++i < size - 1)
+        {
+			if (ft_strcmp(get_by_id(env, t[i])->key, get_by_id(env, t[i + 1])->key) > 0)
+            {
+				tmp = t[i];
+				t[i] = t[i + 1];
+				t[i + 1] = tmp;
+				is_sorted = 0;
+			}
+		}
+	}
+}
+
+int     display_export()
+{
+	t_env *current;
+	int t[env_size(g_env)];
+	int size;
+	int i;
+
+    size = env_size(g_env);
+    i = -1;  
+	sort_by_ascii(g_env, t, env_size(g_env));
+	while (++i < size)
+	{
+		current = get_by_id(g_env, t[i]);
+		if (ft_strcmp(current->key, "_") == 0)
+			continue ;
+		ft_putstr("declare -x ");
+		ft_putstr(current->key);
+		if (current->value)
+		{
+			ft_putstr("=\"");
+			ft_putstr(current->value);
+			ft_putstr("\"");
+		}
+		ft_putstr("\n");
+		current = current->next;
 	}
 	return (1);
 }

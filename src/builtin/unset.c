@@ -6,7 +6,7 @@
 /*   By: astriddelcros <marvin@42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 23:44:45 by astriddel         #+#    #+#             */
-/*   Updated: 2020/07/23 01:09:34 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/08/22 17:16:53 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int     builtin_unset(char **command)
     t_env *to_rm;
 
     env = g_env;
-    if (!valid_key(env->key))
+    if (!valid_key(command[1]))
     {
         ft_putstr("unset: ");
         ft_putstr(command[1]);
-        ft_putstr(": not a valid identifier");
+        ft_putstr(": not a valid identifier\n");
         return (1);
     }
     while (env != NULL)
@@ -32,7 +32,6 @@ int     builtin_unset(char **command)
         {
             to_rm = env->next;
             env->next = to_rm->next;
-            printf("HEY COUCOU");
             free(to_rm->key);
             free(to_rm->value);
             free(to_rm);
