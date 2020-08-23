@@ -6,32 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:40:59 by astriddel         #+#    #+#             */
-/*   Updated: 2020/08/23 15:22:54 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/23 15:31:18 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
-
-int display_export()
-{
-	t_env *current;
-
-	current = g_env;
-	while (current != NULL)
-	{
-		ft_putstr("declare -x ");
-		ft_putstr(current->key);
-		if (current->value)
-		{
-			ft_putstr("=\"");
-			ft_putstr(current->value);
-			ft_putstr("\"");
-		}
-		ft_putstr("\n");
-		current = current->next;
-	}
-	return (1);
-}
 
 int  valid_key(char *key)
 {
