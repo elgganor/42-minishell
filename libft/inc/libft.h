@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 19:08:02 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/30 11:18:28 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/23 15:10:52 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int				ft_tolower(int c);
 int				ft_islower(int c);
 int				ft_isupper(int c);
 int				ft_isquote(int c);
-int				ft_startwith(char *str, int c);
+int				ft_startwith(char *str, char *start);
+int				ft_startwith_char(char *str, int c);
 int				ft_startwith_set(char *str, char *set);
-int				ft_endwith(char *str, int c);
+int				ft_endwith(char *str, char *end);
+int				ft_endwith_char(char *str, int c);
 int				ft_endwith_set(char *str, char *set);
 
 /*

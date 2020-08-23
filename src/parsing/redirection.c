@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/23 11:35:57 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/23 15:20:50 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ int	redirection(char ***command)
 	i = -1;
 	while ((*command)[++i] != NULL)
 	{
-		if (!ft_startwith((*command)[i], ">"))
+		if (ft_startwith_char((*command)[i], '>'))
 		{
 			if (!redirect_output((*command), i, 0))
 				return (0);
 		}
-		else if (!ft_startwith((*command)[i], ">>"))
+		else if (ft_startwith((*command)[i], ">>"))
 		{
 			if (!redirect_output((*command), i, 1))
 				return (0);
 		}
-		else if (!ft_startwith((*command)[i], "<"))
+		else if (ft_startwith_char((*command)[i], '<'))
 		{
 			if (!redirect_input((*command), i))
 				return (0);

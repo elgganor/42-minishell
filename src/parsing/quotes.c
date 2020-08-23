@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 09:59:26 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/19 10:59:53 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/23 15:05:18 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ char	*process_quotes(char **split, int *i, char q)
 
 	j = *i;
 	tmp = ft_strdup(split[j]);
-	if (!ft_endwith(split[j], q))
+	if (!ft_endwith_char(split[j], q))
 	{
 		j++;
 		while (split[j] != NULL)
 		{
 			tmp = ft_join_and_free(tmp, " ");
 			tmp = ft_join_and_free(tmp, split[j]);
-			if (ft_endwith(split[j], q))
+			if (ft_endwith_char(split[j], q))
 				break ;
 			j++;
 		}
@@ -60,9 +60,9 @@ char	**join_quotes(char **split)
 		return (NULL);
 	while (split[i] != NULL)
 	{
-		if (ft_startwith(split[i], '"'))
+		if (ft_startwith_char(split[i], '"'))
 			dest[j++] = process_quotes(split, &i, '"');
-		else if (ft_startwith(split[i], '\''))
+		else if (ft_startwith_char(split[i], '\''))
 			dest[j++] = process_quotes(split, &i, '\'');
 		else
 			dest[j++] = ft_strdup(split[i++]);

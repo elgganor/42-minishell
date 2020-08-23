@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_startwith_set.c                                 :+:      :+:    :+:   */
+/*   ft_startwith_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 10:14:48 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/23 15:05:57 by mrouabeh         ###   ########.fr       */
+/*   Created: 2020/08/23 15:02:53 by mrouabeh          #+#    #+#             */
+/*   Updated: 2020/08/23 15:03:37 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_startwith_set(char *str, char *set)
+int ft_startwith_char(char *str, int c)
 {
-	int	i;
-
-	if (str != NULL && set != NULL)
+	if (str != NULL)
 	{
-		i = 0;
-		while (set[i] != '\0')
-		{
-			if (ft_startwith_char(str, set[i]))
-				return (1);
-			i++;
-		}
+		return (str[0] == c);
 	}
 	return (0);
 }

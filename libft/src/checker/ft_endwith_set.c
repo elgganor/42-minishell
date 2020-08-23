@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 10:15:55 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/07/29 10:18:58 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/23 15:05:54 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_endwith_set(char *str, char *set)
 		i = 0;
 		while (set[i] != '\0')
 		{
-			if (ft_endwith(str, set[i]))
+			if (ft_endwith_char(str, set[i]))
 				return (1);
 			i++;
 		}

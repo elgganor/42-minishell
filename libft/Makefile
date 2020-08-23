@@ -6,7 +6,7 @@
 #    By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 18:06:58 by mrouabeh          #+#    #+#              #
-#    Updated: 2020/07/30 11:18:16 by mrouabeh         ###   ########.fr        #
+#    Updated: 2020/08/23 15:21:55 by mrouabeh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,10 @@ CHECKER=checker/ft_islower.c \
 	checker/ft_isprint.c \
 	checker/ft_isquote.c \
 	checker/ft_startwith.c \
+	checker/ft_startwith_char.c \
 	checker/ft_startwith_set.c \
 	checker/ft_endwith.c \
+	checker/ft_endwith_char.c \
 	checker/ft_endwith_set.c
 CONVERT=convert/ft_tolower.c \
 	convert/ft_toupper.c \
