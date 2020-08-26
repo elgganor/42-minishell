@@ -6,19 +6,12 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/17 11:58:29 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/26 12:20:00 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# define SYSPROG 0
-# define BUILTIN 1
-
-# define EXIT_STATUS 0
-# define SUCCESS_STATUS 1
-# define FAILURE_STATUS 2
 
 # include <stdio.h>
 # include <string.h>
@@ -32,6 +25,17 @@
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <errno.h>
+
+# define SYSPROG 0
+# define BUILTIN 1
+
+# define EXIT_STATUS 0
+# define SUCCESS_STATUS 1
+# define FAILURE_STATUS 2
+
+# define OUT_RIGHT (S_IWUSR | S_IRUSR | S_IRGRP | S_IROTH)
+# define OUT_MOD (O_CREAT | O_RDWR)
+# define APPEND_OUT_MOD (O_CREAT | O_WRONLY | O_APPEND)
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -77,6 +81,7 @@ int				run_system_program(char **command);
 int				is_executable(char *bin);
 void			get_absolute_path(char **command);
 char			*join_path(char *path, char *command);
+void			reset_redirection(void);
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -100,9 +105,9 @@ char			**split_input(char *input);
 char			**split_command(char *command);
 int				is_builtin(char *command);
 int				redirection(char ***command);
-int				redirect_output(char **command, int pos, int type);
+int				redirect_output(char **command, int pos);
+int				append_redirect_output(char **command, int pos);
 int				redirect_input(char **command, int pos);
-void			clear_redirection(void);
 void			parse_env_var(char **command);
 char			**parse_pipe(char *command);
 void			parse_quotes(char *command);

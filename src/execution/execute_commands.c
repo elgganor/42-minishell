@@ -6,13 +6,24 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 16:25:19 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/18 09:16:12 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/08/26 12:21:25 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	execute_command(char **command)
+void	reset_redirection(void)
+{
+	int	stdout;
+	int	stdin;
+
+	stdout = open("/dev/tty", O_RDWR);
+	dup2(stdout, 1);
+	stdin = open("/dev/tty", O_RDWR);
+	dup2(stdin, 0);
+}
+
+int		execute_command(char **command)
 {
 	int	status;
 
@@ -30,7 +41,7 @@ int	execute_command(char **command)
 	return (status);
 }
 
-int	execute_commands(char *command)
+int		execute_commands(char *command)
 {
 	char		**command_args;
 	int			status;
@@ -40,13 +51,13 @@ int	execute_commands(char *command)
 	{
 		if (redirection(&command_args))
 			status = execute_command(command_args);
-		clear_redirection();
+		reset_redirection();
 		free_split(command_args);
 	}
 	return (status);
 }
 
-int	execute_piped_commands(char **piped_commands)
+int		execute_piped_commands(char **piped_commands)
 {
 	int	len;
 	int	status;
