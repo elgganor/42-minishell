@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/26 12:20:00 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:25:13 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define FAILURE_STATUS 2
 
 # define OUT_RIGHT (S_IWUSR | S_IRUSR | S_IRGRP | S_IROTH)
-# define OUT_MOD (O_CREAT | O_RDWR)
+# define OUT_MOD (O_CREAT | O_RDWR | O_TRUNC)
 # define APPEND_OUT_MOD (O_CREAT | O_WRONLY | O_APPEND)
 
 /*

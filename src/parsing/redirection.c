@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/26 12:20:02 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:18:30 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ int	redirect_output(char **command, int pos)
 			return (0);
 		}
 		free(output);
-	}
-	if (dup2(out, 1) == -1)
-	{
-		ft_puterr("[2] Impossible to redirect output");
-		return (0);
+		if (dup2(out, 1) == -1)
+		{
+			ft_puterr("[2] Impossible to redirect output");
+			return (0);
+		}
+		close(out);
 	}
 	return (1);
 }
@@ -57,11 +58,12 @@ int	append_redirect_output(char **command, int pos)
 			return (0);
 		}
 		free(output);
-	}
-	if (dup2(out, 1) == -1)
-	{
-		ft_puterr("[4] Impossible to redirect output");
-		return (0);
+		if (dup2(out, 1) == -1)
+		{
+			ft_puterr("[4] Impossible to redirect output");
+			return (0);
+		}
+		close(out);
 	}
 	return (1);
 }
@@ -80,15 +82,16 @@ int redirect_input(char **command, int pos)
 	{
 		if ((in = open(input, O_RDONLY)) == -1)
 		{
-			ft_puterr("Impossible to redirect intput");
+			ft_puterr("[1] Impossible to redirect intput");
 			return (0);
 		}
 		free(input);
-	}
-	if (dup2(in, 0) == -1)
-	{
-		ft_puterr("Impossible to redirect input");
-		return (0);
+		if (dup2(in, 0) == -1)
+		{
+			ft_puterr("[2] Impossible to redirect input");
+			return (0);
+		}
+		close(in);
 	}
 	return (1);
 }
