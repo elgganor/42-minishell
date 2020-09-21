@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 14:32:32 by astriddel         #+#    #+#             */
-/*   Updated: 2020/09/21 11:27:06 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/09/21 11:56:12 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	builtin_exit(char **command)
 {
     int i;
 
-    i = -1;
+    i = 0;
     while (command[i])
         i++;
     if (i == 1)
