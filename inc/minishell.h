@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/09/01 09:25:13 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/09/21 10:56:44 by astriddel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int				*init_pipes(int nb_command);
 int				builtin_pwd(void);
 int				builtin_cd(char **command);
 int				builtin_env(void);
-int				builtin_exit(void);
+int				builtin_exit(char **command);
 int				builtin_echo(char **command);
 int				builtin_export(char **command);
 int				display_export();
