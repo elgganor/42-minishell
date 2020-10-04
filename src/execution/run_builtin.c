@@ -6,18 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:37 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/09/21 10:57:57 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/10/04 16:14:29 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/*
-** check and run builtin functions
-**
-** @param char** command to execute
-** @return int
-*/
 
 int	run_builtin(char **command)
 {

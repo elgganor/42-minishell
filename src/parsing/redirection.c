@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 15:18:52 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/09/01 09:18:30 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/10/04 16:07:25 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	append_redirect_output(char **command, int pos)
 	return (1);
 }
 
-int redirect_input(char **command, int pos)
+int	redirect_input(char **command, int pos)
 {
 	int		in;
 	char	*input;

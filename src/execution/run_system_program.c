@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/10/04 15:48:21 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/10/04 16:24:13 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,28 @@ int		is_executable(char *bin)
 	return (0);
 }
 
+char	*get_absolute_path2(char *path, char *command)
+{
+	char	**path_split;
+	char	*bin;
+	int		i;
+
+	path_split = ft_split(path, ':');
+	i = -1;
+	while (path_split[++i] != NULL)
+	{
+		bin = join_path(path_split[i], command);
+		if (bin == NULL || is_executable(bin))
+			break ;
+	}
+	free_split(path_split);
+	return (bin);
+}
+
 void	get_absolute_path(char **command)
 {
 	char	*path;
 	char	*bin;
-	char	**path_split;
-	int		i;
 
 	if ((path = ft_strdup(get_env_var("PATH"))) == NULL)
 		path = ft_strdup("/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
@@ -56,17 +72,7 @@ void	get_absolute_path(char **command)
 	{
 		bin = join_path("/", *command);
 		if (!is_executable(bin))
-		{
-			path_split = ft_split(path, ':');
-			i = -1;
-			while (path_split[++i] != NULL)
-			{
-				bin = join_path(path_split[i], *command);
-				if (bin == NULL || is_executable(bin))
-					break;
-			}
-			free_split(path_split);
-		}
+			bin = get_absolute_path2(path, *command);
 		free(*command);
 		*command = bin;
 	}
