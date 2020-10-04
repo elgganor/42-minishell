@@ -6,18 +6,11 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 14:29:32 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/21 11:00:55 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/10/04 15:48:21 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 char	*join_path(char *path, char *command)
 {
@@ -25,7 +18,7 @@ char	*join_path(char *path, char *command)
 	char	*tmp;
 
 	bin = (char *)ft_calloc(sizeof(char),
-					ft_strlen(command) + ft_strlen(path) + 2);
+			ft_strlen(command) + ft_strlen(path) + 2);
 	if (bin == NULL)
 		return (NULL);
 	tmp = ft_strjoin(path, "/");
@@ -33,13 +26,6 @@ char	*join_path(char *path, char *command)
 	free(tmp);
 	return (bin);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 int		is_executable(char *bin)
 {
@@ -56,13 +42,6 @@ int		is_executable(char *bin)
 	}
 	return (0);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 void	get_absolute_path(char **command)
 {
@@ -93,13 +72,6 @@ void	get_absolute_path(char **command)
 	}
 	free(path);
 }
-
-/*
-** @description
-**
-** @param
-** @return
-*/
 
 int		run_system_program(char **command)
 {
