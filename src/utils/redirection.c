@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_redirection.c                                :+:      :+:    :+:   */
+/*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 13:09:13 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/08/26 11:10:39 by mrouabeh         ###   ########.fr       */
+/*   Updated: 2020/10/11 14:01:31 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,15 @@ int			clear_command_of_redirection(char ***command)
 	free_split(*command);
 	*command = tmp;
 	return (1);
+}
+
+void	reset_redirection(void)
+{
+	int	stdout;
+	int	stdin;
+
+	stdout = open("/dev/tty", O_RDWR);
+	dup2(stdout, 1);
+	stdin = open("/dev/tty", O_RDWR);
+	dup2(stdin, 0);
 }

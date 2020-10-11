@@ -6,7 +6,7 @@
 /*   By: mrouabeh <mrouabeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 17:40:10 by mrouabeh          #+#    #+#             */
-/*   Updated: 2020/09/21 10:56:44 by astriddel        ###   ########.fr       */
+/*   Updated: 2020/10/11 14:01:54 by mrouabeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int				run_system_program(char **command);
 int				is_executable(char *bin);
 void			get_absolute_path(char **command);
 char			*join_path(char *path, char *command);
-void			reset_redirection(void);
 
 /*
 ** -------------------------------------------------------------------------- **
@@ -132,6 +131,7 @@ void			ft_puterr(char *err);
 void			free_env(void);
 void			free_split(char **str);
 int				clear_command_of_redirection(char ***command);
+void			reset_redirection(void);
 void			close_pipes(int *pipes, int nb_command);
 void			dup_pipe(int *pipes, int len, int nb_command);
 int				*init_pipes(int nb_command);
